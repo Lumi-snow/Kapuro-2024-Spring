@@ -40,3 +40,7 @@ developブランチからbranchを作成してください(featureだけで大�
   例：
   UIController,
   PlayerController
+
+##その他
+
+- 大きいファイルをpushするとき、gitLFSを使用する
