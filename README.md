@@ -44,3 +44,4 @@ developブランチからbranchを作成してください(featureだけで大�
 ##その他
 
 - 大きいファイルをpushするとき、gitLFSを使用する
+- [メモ用にどうぞ](https://hackmd.io/team/kapuro-2024-Spring-MiniGame?nav=overview)
