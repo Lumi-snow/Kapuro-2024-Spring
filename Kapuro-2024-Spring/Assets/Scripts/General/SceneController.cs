@@ -34,6 +34,12 @@ public static class SceneController
         SceneManager.LoadScene("Scene04");
         Debug.Log("Scene04‚ÉˆÚ“®‚µ‚Ü‚µ‚½");
     }
+
+    public static void ChangeSceneToHowToPlay()
+    {
+        SceneManager.LoadScene("HowToPlay");
+        Debug.Log("HowToPlay‚ÉˆÚ“®‚µ‚Ü‚µ‚½");
+    }
 }
 
 /*ƒV[ƒ“‚Ì’Ç‰Á•û–@*/

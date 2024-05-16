@@ -1,19 +1,22 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIController : MonoBehaviour
+public class UIController_Title : MonoBehaviour
 {
     //Buttons
     [SerializeField] private Button buttonScene01; //[SerializeField]フィールド(変数)をインスペクタ(右のウィンドウ)から編集できるようにする
     [SerializeField] private Button buttonScene02;
     [SerializeField] private Button buttonScene03;
     [SerializeField] private Button buttonScene04;
+    [SerializeField] private Button buttonHowToPlay;
 
     //texts
-    [SerializeField] private TextMeshProUGUI textTitle;
+    [SerializeField] 
+    private TextMeshProUGUI textTitle;
 
     private void Start()
     {
@@ -22,6 +25,7 @@ public class UIController : MonoBehaviour
         buttonScene02.onClick.AddListener(OnClickButtonScene02);
         buttonScene03.onClick.AddListener(OnClickButtonScene03);
         buttonScene04.onClick.AddListener(OnClickButtonScene04);
+        buttonHowToPlay.onClick.AddListener(OnClickButtonHowToPlay);
     }
 
     private void OnClickButtonScene01()
@@ -44,4 +48,8 @@ public class UIController : MonoBehaviour
         SceneController.ChangeSceneToScene04();
     }
 
+    private void OnClickButtonHowToPlay()
+    {
+        SceneController.ChangeSceneToHowToPlay();
+    }
 }
