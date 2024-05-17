@@ -15,41 +15,25 @@ public class UIController_Title : MonoBehaviour
     [SerializeField] private Button buttonHowToPlay;
 
     //texts
-    [SerializeField] 
-    private TextMeshProUGUI textTitle;
+    [SerializeField] private TextMeshProUGUI textTitle;
+
+    //Buttonの配列　イベントハンドラとシーンの名前を格納
+    private List<SceneButton> sceneButtons = new List<SceneButton>();
 
     private void Start()
     {
-        //ButtonにClickEventを追加
-        buttonScene01.onClick.AddListener(OnClickButtonScene01); //クリックされたら自動で引数の中の関数を実行
-        buttonScene02.onClick.AddListener(OnClickButtonScene02);
-        buttonScene03.onClick.AddListener(OnClickButtonScene03);
-        buttonScene04.onClick.AddListener(OnClickButtonScene04);
-        buttonHowToPlay.onClick.AddListener(OnClickButtonHowToPlay);
+        AddSceneButton(buttonScene01, "Scene01");
+        AddSceneButton(buttonScene02, "Scene02");
+        AddSceneButton(buttonScene03, "Scene03");
+        AddSceneButton(buttonScene04, "Scene04");
+        AddSceneButton(buttonHowToPlay, "HowToPlay");
     }
 
-    private void OnClickButtonScene01()
+    private void AddSceneButton(Button button, string sceneName)
     {
-        SceneController.ChangeSceneToScene01();
-    }
-
-    private void OnClickButtonScene02()
-    {
-        SceneController.ChangeSceneToScene02();
-    }
-
-    private void OnClickButtonScene03()
-    {
-        SceneController.ChangeSceneToScene03();
-    }
-
-    private void OnClickButtonScene04()
-    {
-        SceneController.ChangeSceneToScene04();
-    }
-
-    private void OnClickButtonHowToPlay()
-    {
-        SceneController.ChangeSceneToHowToPlay();
+        SceneButton sceneButton = button.gameObject.AddComponent<SceneButton>();
+        sceneButton.SceneName = sceneName; //〇〇.アクセサ名でアクセサにアクセスすることができる
+        sceneButtons.Add(sceneButton);
+        button.onClick.AddListener(sceneButton.onClick);
     }
 }

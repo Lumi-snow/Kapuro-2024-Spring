@@ -536,6 +536,7 @@ GameObject:
   - component: {fileID: 231381299}
   - component: {fileID: 231381301}
   - component: {fileID: 231381300}
+  - component: {fileID: 231381302}
   m_Layer: 0
   m_Name: PanelScene01
   m_TagString: Untagged
@@ -563,7 +564,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1920, y: 1080}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &231381300
 MonoBehaviour:
@@ -603,6 +604,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 231381298}
   m_CullTransparentMesh: 1
+--- !u!114 &231381302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 231381298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad18a5190bd3f664083eb08b9861222f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panelTitle: {fileID: 1232852794}
+  nextButton: {fileID: 2124156266}
+  prevButton: {fileID: 1494946383}
 --- !u!1 &291825917
 GameObject:
   m_ObjectHideFlags: 0
@@ -2728,6 +2744,7 @@ GameObject:
   - component: {fileID: 1562734629}
   - component: {fileID: 1562734631}
   - component: {fileID: 1562734630}
+  - component: {fileID: 1562734632}
   m_Layer: 0
   m_Name: PanelScene03
   m_TagString: Untagged
@@ -2795,6 +2812,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1562734628}
   m_CullTransparentMesh: 1
+--- !u!114 &1562734632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1562734628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad18a5190bd3f664083eb08b9861222f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panelTitle: {fileID: 1078276895}
+  nextButton: {fileID: 1938918882}
+  prevButton: {fileID: 830341086}
 --- !u!1 &1596273772
 GameObject:
   m_ObjectHideFlags: 0
@@ -2996,22 +3028,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonBackToTitle: {fileID: 341151724}
-  panelScene01: {fileID: 231381298}
-  panelScene01NextButton: {fileID: 2124156266}
-  panelScene01PrevButton: {fileID: 1494946383}
-  panelScene01Title: {fileID: 1232852794}
-  panelScene02: {fileID: 2040303063}
-  panelScene02NextButton: {fileID: 1043008186}
-  panelScene02PrevButton: {fileID: 1549323952}
-  panelScene02Title: {fileID: 886388574}
-  panelScene03: {fileID: 1562734628}
-  panelScene03NextButton: {fileID: 1938918882}
-  panelScene03PrevButton: {fileID: 830341086}
-  panelScene03Title: {fileID: 1078276895}
-  panelScene04: {fileID: 1818034322}
-  panelScene04NextButton: {fileID: 903605835}
-  panelScene04PrevButton: {fileID: 1708553479}
-  panelScene04Title: {fileID: 291825919}
 --- !u!1 &1778953477
 GameObject:
   m_ObjectHideFlags: 0
@@ -3157,6 +3173,7 @@ GameObject:
   - component: {fileID: 1818034323}
   - component: {fileID: 1818034325}
   - component: {fileID: 1818034324}
+  - component: {fileID: 1818034326}
   m_Layer: 0
   m_Name: PanelScene04
   m_TagString: Untagged
@@ -3224,6 +3241,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1818034322}
   m_CullTransparentMesh: 1
+--- !u!114 &1818034326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1818034322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad18a5190bd3f664083eb08b9861222f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panelTitle: {fileID: 291825919}
+  nextButton: {fileID: 903605835}
+  prevButton: {fileID: 1708553479}
 --- !u!1 &1898359334
 GameObject:
   m_ObjectHideFlags: 0
@@ -3560,6 +3592,7 @@ GameObject:
   - component: {fileID: 2040303064}
   - component: {fileID: 2040303066}
   - component: {fileID: 2040303065}
+  - component: {fileID: 2040303067}
   m_Layer: 0
   m_Name: PanelScene02
   m_TagString: Untagged
@@ -3627,6 +3660,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2040303063}
   m_CullTransparentMesh: 1
+--- !u!114 &2040303067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2040303063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad18a5190bd3f664083eb08b9861222f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panelTitle: {fileID: 886388574}
+  nextButton: {fileID: 1043008186}
+  prevButton: {fileID: 1549323952}
 --- !u!1 &2054043867
 GameObject:
   m_ObjectHideFlags: 0
@@ -3653,7 +3701,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2054043867}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
