@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59fab9314518a7d4b88a71e1af5bcc9a, type: 3}
+  m_Name: AudioControllerSetting
+  m_EditorClassIdentifier: 
+  isAutoUpdateAudioPath: 1
+  bgmAudioPlayerNum: 3
+  seAudioPlayerNum: 10
+  bgmBaseVolume: 1
+  seBaseVolume: 1
+  shouldAdjustSEVolumeRate: 1
+  isAutoGenerateBGMController: 1
+  isAutoGenerateSEController: 1
+  isDestroyBGMController: 0
+  isDestroySEController: 0
+  bgmCacheType: 1
+  seCacheType: 1
+  isReleaseBGMCache: 0
+  isReleaseSECache: 0
+  isAutoUpdateBGMSetting: 1
+  isAutoUpdateSESetting: 1
+  forceToMonoForBGM: 1
+  forceToMonoForSE: 1
+  normalizeForBGM: 1
+  normalizeForSE: 1
+  ambisonicForBGM: 0
+  ambisonicForSE: 0
+  loadInBackgroundForBGM: 0
+  loadInBackgourndForSE: 0
+  loadTypeForBGM: 2
+  loadTypeForSE: 1
+  qualityForBGM: 0.3
+  qualityForSE: 0.3
+  compressionFormatForBGM: 1
+  compressionFormatForSE: 1
+  sampleRateSettingForBGM: 1
+  sampleRateSettingForSE: 1
