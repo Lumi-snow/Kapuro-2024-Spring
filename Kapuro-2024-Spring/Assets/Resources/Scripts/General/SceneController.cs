@@ -54,4 +54,4 @@ public static class SceneController
 ///2,Unityエディタ左上のFileからSave as...でScenesフォルダにSceneを保存
 ///3,Unityエディタ左上のBuild settingsからAdd open scenesで現在のシーンを追加する
 ///4,ここに関数を書く(static修飾子を忘れずに！)
-///5,クラス名.関数名でシーンを呼び出す
+///5,クラス名.関数名 or ChangeScene(シーンの名前)でシーンを呼び出す
