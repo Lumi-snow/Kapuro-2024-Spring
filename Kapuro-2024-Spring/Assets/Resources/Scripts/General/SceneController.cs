@@ -34,6 +34,18 @@ public static class SceneController
         SceneManager.LoadScene("Scene04");
         Debug.Log("Scene04に移動しました");
     }
+
+    public static void ChangeSceneToHowToPlay()
+    {
+        SceneManager.LoadScene("HowToPlay");
+        Debug.Log("HowToPlayに移動しました");
+    }
+
+    public static void ChangeScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
+        Debug.Log(sceneName + "に移動しました");
+    }
 }
 
 /*シーンの追加方法*/
@@ -42,4 +54,4 @@ public static class SceneController
 ///2,Unityエディタ左上のFileからSave as...でScenesフォルダにSceneを保存
 ///3,Unityエディタ左上のBuild settingsからAdd open scenesで現在のシーンを追加する
 ///4,ここに関数を書く(static修飾子を忘れずに！)
-///5,クラス名.関数名でシーンを呼び出す
+///5,クラス名.関数名 or ChangeScene(シーンの名前)でシーンを呼び出す
