@@ -380,7 +380,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a343df268a4cf2c469fc94a3bc673555, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  createprefab: {fileID: 1514665287}
+  createprefab: {fileID: 57886262465093473, guid: 8fd7150323c2ae448a2c5d2413b28fb1, type: 3}
   rangeA: {fileID: 754303504}
   rangeB: {fileID: 2077089086}
 --- !u!4 &858284522
@@ -756,11 +756,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1514665287 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 57886262465093473, guid: 8fd7150323c2ae448a2c5d2413b28fb1, type: 3}
-  m_PrefabInstance: {fileID: 2306831595616583452}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1554196519
 GameObject:
   m_ObjectHideFlags: 0
@@ -881,7 +876,7 @@ GameObject:
   - component: {fileID: 1680725856}
   m_Layer: 0
   m_Name: player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1035,7 +1030,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.2, y: 1.2}
   m_EdgeRadius: 0
 --- !u!1 &2077089085
 GameObject:
@@ -1120,6 +1115,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2759143934756077877, guid: 8fd7150323c2ae448a2c5d2413b28fb1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: be5832224da01d147bf766990ad53df8, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
