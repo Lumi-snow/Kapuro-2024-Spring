@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Scene02.unity
     guid: 30545c5527840864a97d0fda73bd8b10
   - enabled: 1
-    path: Assets/Scenes/Scene03.unity
+    path: Assets/Scenes/koto.unity
     guid: 6c6df15aa95e1cd4aa69a82fd8da3a25
   - enabled: 1
     path: Assets/Scenes/Scene04.unity
