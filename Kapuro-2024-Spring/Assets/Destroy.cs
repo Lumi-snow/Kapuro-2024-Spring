@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class Destroy : MonoBehaviour
 {
-    void OnCollisionEnter(Collision collision)
+    void OnCollisionEnter2D(Collision2D obj)
     {
-        if (collision.gameObject.tag == "Player")
+        //Debug.Log("衝突！！");
+        if (obj.gameObject.tag == "Player")
         {
             Debug.Log("衝突！！");
-            Destroy(gameObject);
+            Destroy(this.gameObject);
         }
     }
 }
