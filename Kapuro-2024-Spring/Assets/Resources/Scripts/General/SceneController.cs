@@ -25,8 +25,8 @@ public static class SceneController
 
     public static void ChangeSceneToScene03()
     {
-        SceneManager.LoadScene("Scene03");
-        Debug.Log("Scene03‚ÉˆÚ“®‚µ‚Ü‚µ‚½");
+        SceneManager.LoadScene("koto");
+        Debug.Log("koto‚ÉˆÚ“®‚µ‚Ü‚µ‚½");
     }
 
     public static void ChangeSceneToScene04()
