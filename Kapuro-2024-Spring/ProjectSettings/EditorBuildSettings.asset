@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Scene01.unity
     guid: 317b185db95a72d468de4462f3d83d80
   - enabled: 1
-    path: Assets/Scenes/Scene02.unity
+    path: Assets/Scenes/Ryota.unity
     guid: 30545c5527840864a97d0fda73bd8b10
   - enabled: 1
     path: Assets/Scenes/koto.unity
