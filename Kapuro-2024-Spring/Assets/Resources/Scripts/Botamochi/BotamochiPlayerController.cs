@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class BotamochiPlayerController : MonoBehaviour
 {
     //後から調整しやすいようにSerializeField化してあります。とりあえず0.05で動かします。
     [SerializeField] float speed; 
