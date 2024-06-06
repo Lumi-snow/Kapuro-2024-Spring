@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIControllerTitle : MonoBehaviour
+public class UIController_Title : MonoBehaviour
 {
     //Buttons
     [SerializeField] private Button buttonScene01; //[SerializeField]�t�B�[���h(�ϐ�)���C���X�y�N�^(�E�̃E�B���h�E)����ҏW�ł���悤�ɂ���

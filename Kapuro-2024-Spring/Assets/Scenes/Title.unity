@@ -1701,7 +1701,7 @@ GameObject:
   - component: {fileID: 1771980032}
   - component: {fileID: 1771980033}
   m_Layer: 0
-  m_Name: UIControllerTitle
+  m_Name: UIController_Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1974,6 +1974,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabList: {fileID: 11400000, guid: f411ee8140bf73045a8a97cc52c60905, type: 2}
+  clonePrefab: {fileID: 0}
 --- !u!4 &2042174205
 Transform:
   m_ObjectHideFlags: 0
