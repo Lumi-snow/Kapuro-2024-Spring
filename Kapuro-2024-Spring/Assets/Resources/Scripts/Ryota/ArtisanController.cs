@@ -24,12 +24,12 @@ public class ArtisanController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.LeftArrow) && Px > Lx + distance)
         {
-            transform.Translate(-1 * speed, 0, 0);
+            transform.Translate(-1 * speed * Time.deltaTime, 0, 0);
         }
 
         if (Input.GetKey(KeyCode.RightArrow) && Px < Rx - distance)
         {
-            transform.Translate(speed, 0, 0);
+            transform.Translate(speed * speed * Time.deltaTime, 0, 0);
         }
 
     }
