@@ -2,21 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RyotaPlayerController : MonoBehaviour
+public class ArtisanController : MonoBehaviour
 {
     GameObject WallLeft;
     GameObject WallRight;
-    float speed = 0.8f;
+    float speed = 3f;
     int distance = 50;//•Ç‚Æplayer‚Ì‹——£
 
-    // Start is called before the first frame update
     void Start()
     {
         this.WallLeft = GameObject.Find("WallLeft");
         this.WallRight = GameObject.Find("WallRight");
     }
 
-    // Update is called once per frame
     void Update()
     {
         
@@ -26,12 +24,12 @@ public class RyotaPlayerController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.LeftArrow) && Px > Lx + distance)
         {
-            transform.Translate(-1 * speed, 0, 0);
+            transform.Translate(-1 * speed * Time.deltaTime, 0, 0);
         }
 
         if (Input.GetKey(KeyCode.RightArrow) && Px < Rx - distance)
         {
-            transform.Translate(speed, 0, 0);
+            transform.Translate(speed * speed * Time.deltaTime, 0, 0);
         }
 
     }
