@@ -5,10 +5,10 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIController_Title : MonoBehaviour
+public class UIControllerTitle : MonoBehaviour
 {
     //Buttons
-    [SerializeField] private Button buttonScene01; //[SerializeField]ƒtƒB[ƒ‹ƒh(•Ï”)‚ğƒCƒ“ƒXƒyƒNƒ^(‰E‚ÌƒEƒBƒ“ƒhƒE)‚©‚ç•ÒW‚Å‚«‚é‚æ‚¤‚É‚·‚é
+    [SerializeField] private Button buttonScene01; //[SerializeField]ï¿½tï¿½Bï¿½[ï¿½ï¿½ï¿½h(ï¿½Ïï¿½)ï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½Xï¿½yï¿½Nï¿½^(ï¿½Eï¿½ÌƒEï¿½Bï¿½ï¿½ï¿½hï¿½E)ï¿½ï¿½ï¿½ï¿½ÒWï¿½Å‚ï¿½ï¿½ï¿½æ‚¤ï¿½É‚ï¿½ï¿½ï¿½
     [SerializeField] private Button buttonScene02;
     [SerializeField] private Button buttonScene03;
     [SerializeField] private Button buttonScene04;
@@ -17,7 +17,7 @@ public class UIController_Title : MonoBehaviour
     //texts
     [SerializeField] private TextMeshProUGUI textTitle;
 
-    //Button‚Ì”z—ñ@ƒCƒxƒ“ƒgƒnƒ“ƒhƒ‰‚ÆƒV[ƒ“‚Ì–¼‘O‚ğŠi”[
+    //Buttonï¿½Ì”zï¿½ï¿½@ï¿½Cï¿½xï¿½ï¿½ï¿½gï¿½nï¿½ï¿½ï¿½hï¿½ï¿½ï¿½ÆƒVï¿½[ï¿½ï¿½ï¿½Ì–ï¿½ï¿½Oï¿½ï¿½ï¿½iï¿½[
     private List<SceneButton> sceneButtons = new List<SceneButton>();
 
     private void Start()
@@ -32,7 +32,7 @@ public class UIController_Title : MonoBehaviour
     private void AddSceneButton(Button button, string sceneName)
     {
         SceneButton sceneButton = button.gameObject.AddComponent<SceneButton>();
-        sceneButton.SceneName = sceneName; //ZZ.ƒAƒNƒZƒT–¼‚ÅƒAƒNƒZƒT‚ÉƒAƒNƒZƒX‚·‚é‚±‚Æ‚ª‚Å‚«‚é
+        sceneButton.SceneName = sceneName; //ï¿½Zï¿½Z.ï¿½Aï¿½Nï¿½Zï¿½Tï¿½ï¿½ï¿½ÅƒAï¿½Nï¿½Zï¿½Tï¿½ÉƒAï¿½Nï¿½Zï¿½Xï¿½ï¿½ï¿½é‚±ï¿½Æ‚ï¿½ï¿½Å‚ï¿½ï¿½ï¿½
         sceneButtons.Add(sceneButton);
         button.onClick.AddListener(sceneButton.onClick);
     }

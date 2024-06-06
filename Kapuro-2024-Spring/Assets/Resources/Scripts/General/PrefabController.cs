@@ -1,38 +1,68 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Prefabs")]
-public class Prefabs : ScriptableObject
+//PrefabのScriptableObject
+[CreateAssetMenu(fileName = "PrefabData", menuName = "Prefabs")]
+public class PrefabList : ScriptableObject
 {
-    [SerializeField] private GameObject[] prefabs;
+    public List<GameObject> prefabs;
+}
 
-    private static Prefabs instance;
-    public static Prefabs Instance
+//プレハブを管理するクラス
+[Serializable]
+public class PrefabController : MonoBehaviour
+{
+    //プレハブのScriptableObject
+    [SerializeField] PrefabList prefabList;
+
+    public GameObject clonePrefab;
+    
+    //新しいプレハブを追加する
+    public void AddNewPrefab(GameObject newPrefab)
     {
-        get
-        {
-            if(instance == null)
-            {
-                instance = Resources.Load<Prefabs>("Prefabs");
-            }
-
-            return instance;
-        }
+        prefabList.prefabs.Add(newPrefab);
+        
+    }
+    
+    //任意のプレハブを取得する
+    public GameObject GetPrefab(string prefabName)
+    {
+        return prefabList.prefabs.Find(prefab => prefab.name == prefabName);
+    }
+    
+    //任意のプレハブを削除する
+    public void RemovePrefab(string prefabName)
+    {
+        prefabList.prefabs.Remove(prefabList.prefabs.Find(prefab => prefab.name == prefabName));
+    }
+    
+    //全てのプレハブを削除する
+    public void RemoveAllPrefabs()
+    {
+        prefabList.prefabs.Clear();
+    }
+    
+    /*OverLoadされた関数群*/
+    //任意のプレハブをインスタンス化する
+    public void InstantiatePrefab(string prefabName, Vector3 position, Quaternion rotation, GameObject parent)
+    {
+        clonePrefab = Instantiate(GetPrefab(prefabName), position, rotation, parent.transform);
+    }
+    
+    public void InstantiatePrefab(string prefabName, Vector3 position, Quaternion rotation)
+    {
+        clonePrefab = Instantiate(GetPrefab(prefabName), position, rotation);
+    }
+    
+    public void InstantiatePrefab(string prefabName, Vector3 position)
+    {
+        clonePrefab = Instantiate(GetPrefab(prefabName), position, Quaternion.identity);
     }
 
-    public static GameObject GetPrefabFromType<T>()
+    public void InstantiatePrefab(string prefabName)
     {
-        GameObject result = null;
-
-        foreach(var prefab in Prefabs.Instance.prefabs)
-        {
-            if(prefab.GetComponent<T>() != null)
-            {
-                result = prefab;
-                return result;
-            }
-        }
-
-        Debug.LogError(typeof(T) + " は登録されていないPrefabです");
-        return null;
+        clonePrefab = Instantiate(GetPrefab(prefabName), Vector3.zero, Quaternion.identity);
     }
+    /*OverLoadされた関数群*/
 }

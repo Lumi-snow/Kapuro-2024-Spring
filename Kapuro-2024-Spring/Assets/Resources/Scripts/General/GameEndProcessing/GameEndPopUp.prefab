@@ -597,8 +597,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5750477431335866092}
+  - component: {fileID: 7668907478042616172}
   m_Layer: 0
-  m_Name: PopUp
+  m_Name: GameEndPopUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -620,6 +621,22 @@ Transform:
   - {fileID: 7887990151776677292}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7668907478042616172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8160394798909568264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93a3ebe8925aa6a4b8d968d27494c98e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabController: {fileID: 0}
+  buttonYes: {fileID: 4991906646832636551}
+  buttonNo: {fileID: 8776825281623889581}
+  confirmMessage: {fileID: 8094927086906871800}
 --- !u!1 &8172986936252308473
 GameObject:
   m_ObjectHideFlags: 0
