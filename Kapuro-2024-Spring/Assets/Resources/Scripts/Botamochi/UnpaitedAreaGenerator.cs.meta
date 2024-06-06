@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: da500272d384b014ea896a03c0e51dd0
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - UnpaintedArea: {fileID: 5667606385284778885, guid: fd557c88281e4774dabd9d2aad7cfdb5, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
