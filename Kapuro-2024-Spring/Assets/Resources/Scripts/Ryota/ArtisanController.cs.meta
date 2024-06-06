@@ -1,6 +1,10 @@
 fileFormatVersion: 2
 <<<<<<<< HEAD:Kapuro-2024-Spring/Assets/Resources/Scripts/Ryota/PlayerController.cs.meta
-guid: 166cec90039448640ad8fb443e76258f
+<<<<<<<< HEAD:Kapuro-2024-Spring/Assets/Resources/Scripts/Ryota/ArtisanController.cs.meta
+guid: 5e90035465778db4e9a4ac51527b1e6c
+========
+guid: 46261d89870de8245bfc7b76aae06ea1
+>>>>>>>> develop:Kapuro-2024-Spring/Assets/Resources/Scripts/Ryota/RyotaPlayerController.cs.meta
 ========
 guid: a343df268a4cf2c469fc94a3bc673555
 >>>>>>>> develop:Kapuro-2024-Spring/Assets/CreateRandomPosition.cs.meta
