@@ -2,21 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class ArtisanController : MonoBehaviour
 {
     GameObject WallLeft;
     GameObject WallRight;
-    float speed = 0.8f;
+    float speed = 3f;
     int distance = 50;//•Ç‚Æplayer‚Ì‹——£
 
-    // Start is called before the first frame update
     void Start()
     {
         this.WallLeft = GameObject.Find("WallLeft");
         this.WallRight = GameObject.Find("WallRight");
     }
 
-    // Update is called once per frame
     void Update()
     {
         
