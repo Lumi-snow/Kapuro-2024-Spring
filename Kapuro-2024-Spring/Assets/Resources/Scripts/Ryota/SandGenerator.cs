@@ -16,7 +16,7 @@ public class SandGenerator : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Debug.Log("push space");
+            //Debug.Log("push space");
             GameObject sand = Instantiate(sandPrefab);
             sand.transform.position = new Vector3(Player.transform.position.x, Player.transform.position.y - 20, 500);
         }

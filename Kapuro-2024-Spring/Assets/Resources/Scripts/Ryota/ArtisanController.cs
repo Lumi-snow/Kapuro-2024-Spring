@@ -2,11 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-<<<<<<<< HEAD:Kapuro-2024-Spring/Assets/Resources/Scripts/Ryota/ArtisanController.cs
 public class ArtisanController : MonoBehaviour
-========
-public class RyotaPlayerController : MonoBehaviour
->>>>>>>> develop:Kapuro-2024-Spring/Assets/Resources/Scripts/Ryota/RyotaPlayerController.cs
 {
     GameObject WallLeft;
     GameObject WallRight;
