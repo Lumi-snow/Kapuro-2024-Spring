@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //Š¢‚Ì’ŠÛƒNƒ‰ƒX
-public abstract class RoofTile
+public abstract class RoofTile : MonoBehaviour
 {
-
+    
 }

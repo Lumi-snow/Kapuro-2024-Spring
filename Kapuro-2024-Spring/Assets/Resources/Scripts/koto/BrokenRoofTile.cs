@@ -5,5 +5,5 @@ using UnityEngine;
 //‰ó‚ê‚½Š¢
 public class BrokenRoofTile : RoofTile
 {
-
+    
 }
