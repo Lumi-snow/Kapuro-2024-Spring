@@ -41,8 +41,13 @@ developブランチからbranchを作成してください(featureだけで大�
   UIController,
   PlayerController
 
-##その他
+## その他
 
 - 大きいファイルをpushするとき、gitLFSを使用する
 - [メモ用にどうぞ](https://hackmd.io/team/kapuro-2024-Spring-MiniGame?nav=overview)
 - ↑に[参加する](https://hackmd.io/join/H1eThqIWC)
+
+## ライセンス
+
+-本ソフトウェアでは、表示フォントにNoto Sans Japanese(https://fonts.google.com/noto/specimen/Noto+Sans+JP)を使用しています。
+  Licensed under SIL Open Font License 1.1 (http://scripts.sil.org/OFL)
