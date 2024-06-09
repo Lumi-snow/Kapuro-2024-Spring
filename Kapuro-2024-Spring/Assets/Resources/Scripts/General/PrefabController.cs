@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 //PrefabのScriptableObject
@@ -40,6 +41,12 @@ public class PrefabController : MonoBehaviour
     //全てのプレハブを削除する
     public void RemoveAllPrefabs()
     {
+        if (prefabList.prefabs.Count == 0)
+        {
+            Debug.Log("Notice: PrefabList is empty.");
+            return;
+        }
+        
         prefabList.prefabs.Clear();
     }
     
@@ -65,4 +72,11 @@ public class PrefabController : MonoBehaviour
         clonePrefab = Instantiate(GetPrefab(prefabName), Vector3.zero, Quaternion.identity);
     }
     /*OverLoadされた関数群*/
+
+    //非同期処理で全てのプレハブを削除する
+    public async UniTask RemoveAllPrefabListAsync()
+    {
+        await UniTask.Delay(1000);
+        RemoveAllPrefabs();
+    }
 }
