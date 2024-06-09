@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 public class GameEndProcessing : MonoBehaviour
@@ -35,6 +36,8 @@ public class GameEndProcessing : MonoBehaviour
             addGameObjectController.AddGameObject();
             prefabController.InstantiatePrefab(gameEndPopUpPrefab.name, Vector3.zero, Quaternion.identity, addGameObjectController.NewGameObject);
             cloneGameEndPopUpPrefab = prefabController.clonePrefab;
+            Animator onExpressedAnimator = cloneGameEndPopUpPrefab.GetComponent<Animator>();
+            onExpressedAnimator.SetTrigger("Escape");
             IsGameEndPopUpActive = true;
         }
     }

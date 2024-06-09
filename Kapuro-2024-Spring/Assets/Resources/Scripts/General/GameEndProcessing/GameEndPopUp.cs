@@ -1,8 +1,8 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.Text;
+using Cysharp.Threading.Tasks;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -48,6 +48,18 @@ public class GameEndPopUp : PrefabData
     //Noボタンが押された時の処理
     public void NoButtnoProcess()
     {
+        StartCoroutine(DestroyProcess());
+    }
+    
+    private IEnumerator DestroyProcess()
+    {
+        Animator onDestroyAnimator = this.GetComponent<Animator>();
+        onDestroyAnimator.SetTrigger("Destroy");
+        while (!onDestroyAnimator.GetCurrentAnimatorStateInfo(0).IsName("OnDestroy") ||
+               onDestroyAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f)
+        {
+            yield return null;
+        }
         Destroy(this.gameObject);
     }
 }
