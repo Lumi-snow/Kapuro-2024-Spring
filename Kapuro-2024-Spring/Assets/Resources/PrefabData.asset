@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: PrefabData
   m_EditorClassIdentifier: Assembly-CSharp::PrefabList
   prefabs:
-  - {fileID: 8160394798909568264, guid: 525ccc6570d75064da0127ff34ac85a7, type: 3}
+  - {fileID: 3963400191648828892, guid: aac20b12ceb844e4999762ea27556b32, type: 3}
+  - {fileID: 3963400191648828892, guid: 3912eb564751ef6408e8c04cc54caa79, type: 3}

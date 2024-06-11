@@ -22,7 +22,6 @@ public class PrefabController : MonoBehaviour
     public void AddNewPrefab(GameObject newPrefab)
     {
         prefabList.prefabs.Add(newPrefab);
-        
     }
     
     //”CˆÓ‚ÌƒvƒŒƒnƒu‚ðŽæ“¾‚·‚é
