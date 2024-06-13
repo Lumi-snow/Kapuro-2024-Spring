@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
-//ïÅí ÇÃä¢
-public class CorrectRoofTile : RoofTile
+public abstract class AbstractBoss : MonoBehaviour
 {
     
 }

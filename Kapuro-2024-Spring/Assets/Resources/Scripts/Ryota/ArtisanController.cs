@@ -6,7 +6,7 @@ public class ArtisanController : MonoBehaviour
 {
     GameObject WallLeft;
     GameObject WallRight;
-    float speed = 3f;
+    public float speed = 3f;
     int distance = 50;//•Ç‚Æplayer‚Ì‹——£
 
     void Start()
@@ -29,7 +29,7 @@ public class ArtisanController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.RightArrow) && Px < Rx - distance)
         {
-            transform.Translate(speed * speed * Time.deltaTime, 0, 0);
+            transform.Translate(speed * Time.deltaTime, 0, 0);
         }
 
     }

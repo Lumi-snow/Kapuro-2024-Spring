@@ -1,52 +1,54 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RoofTileGenerator : MonoBehaviour, IRoofTileGenerator
+//瓦を生成するクラス
+public class RoofTileGenerator : MonoBehaviour
 {
-    [SerializeField] private List<RoofTile> roofTiles = new List<RoofTile>(); //瓦たち
-    [SerializeField] private float waitingTime; //ボタン押下待機時間
-    [SerializeField] private int allRoofTileType; //瓦の種類
-    [SerializeField] private int allRoofTileNum; //瓦の総数
-
-    private void Start()
-    {
-        Initialize();
-        PrintList();
-    }
-
-    private void Update()
-    {
-
-    }
+    [SerializeField] private List<GameObject> roofTileType; //瓦のPrefab
+    
+    [SerializeField] private RoofTileController roofTileController; //RoofTileController
+    [SerializeField] private PrefabController prefabController; //PrefabController
+    [SerializeField] private AddGameObjectController addGameObjectController; //AddGameObjectController
 
     //初期化
     public void Initialize()
     {
-        //DEBUG この値はデバッグ用
-        waitingTime = 2.0f;
-        allRoofTileType = 2;
-        allRoofTileNum = 5;
-
-        for(int i = 0; i < allRoofTileNum; i++)
+        //PrefabControllerに瓦のPrefabを登録
+        foreach(GameObject _roofTile in roofTileType)
         {
-            Generate();
+            prefabController.AddNewPrefab(_roofTile);
         }
+        
+        //空のゲームオブジェクトをCanvasの子として生成
+        addGameObjectController.SetPairGameObject("RoofTiles", "Canvas");
+        addGameObjectController.AddGameObject();
+        
+        for(int i = 0; i < roofTileController.allRoofTileNum; i++)
+        {
+            GenerateRoofTile(); //瓦を生成
+        }
+        
+        GenerateEventRoofTile(); //イベント瓦を生成
     }
 
     //瓦を生成
-    public void Generate()
+    public void GenerateRoofTile()
     {
-        int randomValue = UnityEngine.Random.Range(0, allRoofTileType);
+        int randomValue = UnityEngine.Random.Range(0, roofTileType.Count - 1); //瓦の種類をランダムに決定
 
         switch (randomValue)
         {
-            case 0:
-                roofTiles.Add(new CorrectRoofTile());
+            case 0: //CorrectRoofTileを生成
+                prefabController.InstantiatePrefab("CorrectRoofTile", Vector3.zero, Quaternion.identity, addGameObjectController.NewGameObject); //PrefabからCorrectRoofTileを複製
+                GameObject correctRoofTile = prefabController.clonePrefab;
+                correctRoofTile.GetComponent<RoofTile>().evaluateType = RoofTile.EvaluateType.NOT_EVALUATED; //CorrectRoofTileの評価をNOT_EVALUATEDに設定
+                roofTileController.roofTiles.Add(correctRoofTile); //複製したCorrectRoofTileをリストに追加
                 break;
-            case 1:
-                roofTiles.Add(new BrokenRoofTile());
+            case 1: //BrokenRoofTileを生成
+                prefabController.InstantiatePrefab("BrokenRoofTile", Vector3.zero, Quaternion.identity, addGameObjectController.NewGameObject); //PrefabからBrokenRoofTileを複製
+                GameObject brokenRoofTile = prefabController.clonePrefab;
+                brokenRoofTile.GetComponent<RoofTile>().evaluateType = RoofTile.EvaluateType.NOT_EVALUATED; //BrokenRoofTileの評価をNOT_EVALUATEDに設定
+                roofTileController.roofTiles.Add(brokenRoofTile); //複製したBrokenRoofTileをリストに追加
                 break;
             default:
                 Debug.Log("Error occured in Generate(), RoofTileGenerator");
@@ -54,15 +56,24 @@ public class RoofTileGenerator : MonoBehaviour, IRoofTileGenerator
         }
     }
 
+    private void GenerateEventRoofTile()
+    {
+        int randomValue = UnityEngine.Random.Range(0, roofTileController.allRoofTileNum - 1); //瓦の種類をランダムに決定
+        
+        prefabController.InstantiatePrefab("EventRoofTile", Vector3.zero, Quaternion.identity, addGameObjectController.NewGameObject); //PrefabからEventRoofTileを複製
+        GameObject eventRoofTile = prefabController.clonePrefab;
+        roofTileController.roofTiles.Insert(randomValue, eventRoofTile); //複製したEventRoofTileをリストに追加
+    }
+
     //DEBUG Listの中身を表示
     private void PrintList()
     {
-        foreach(RoofTile roofTile in roofTiles)
+        foreach(GameObject _roofTile in roofTileController.roofTiles)
         {
-            if (roofTile != null)
+            if (_roofTile != null)
             {
                 Debug.Log("瓦誕生！");
-                Debug.Log(roofTile.GetType().Name);
+                Debug.Log(_roofTile.GetType().Name);
             }
             else
             {

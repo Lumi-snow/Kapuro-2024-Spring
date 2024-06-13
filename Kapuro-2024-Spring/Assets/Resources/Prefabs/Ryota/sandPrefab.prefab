@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 2671861965342822768}
   - component: {fileID: 6268955872506294197}
   - component: {fileID: 999370591995278440}
+  - component: {fileID: -9032141527526264059}
+  - component: {fileID: 4395845968260679605}
   m_Layer: 0
   m_Name: sandPrefab
   m_TagString: Untagged
@@ -133,3 +135,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 8
   m_CollisionDetection: 2
+--- !u!114 &-9032141527526264059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2009217804572136799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3efd1fa275f97494a974f087c49588fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4395845968260679605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2009217804572136799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9d1725f166695240b424e313bb5ef01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
