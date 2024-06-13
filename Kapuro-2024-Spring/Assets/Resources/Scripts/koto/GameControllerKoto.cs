@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameControllerKoto : AbstractGameController
 {
     [SerializeField] private RoofTileController roofTileController;
+    [SerializeField] private UIControllerKoto uiControllerKoto;
     private void Awake()
     {
         
@@ -17,6 +18,9 @@ public class GameControllerKoto : AbstractGameController
 
     private void Update()
     {
-        
+        roofTileController.Evaluate(); //瓦の評価
+        roofTileController.Destroy(); //瓦の破棄
+        roofTileController.GameEndProcess(); //ゲーム終了時の処理
+        uiControllerKoto.UpdateScoreText(); //スコアの更新
     }
 }

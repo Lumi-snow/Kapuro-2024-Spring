@@ -39,11 +39,13 @@ public class RoofTileGenerator : MonoBehaviour
             case 0: //CorrectRoofTileを生成
                 prefabController.InstantiatePrefab("CorrectRoofTile", Vector3.zero, Quaternion.identity, addGameObjectController.NewGameObject); //PrefabからCorrectRoofTileを複製
                 GameObject correctRoofTile = prefabController.clonePrefab;
+                correctRoofTile.GetComponent<RoofTile>().evaluateType = RoofTile.EvaluateType.NOT_EVALUATED; //CorrectRoofTileの評価をNOT_EVALUATEDに設定
                 roofTileController.roofTiles.Add(correctRoofTile); //複製したCorrectRoofTileをリストに追加
                 break;
             case 1: //BrokenRoofTileを生成
                 prefabController.InstantiatePrefab("BrokenRoofTile", Vector3.zero, Quaternion.identity, addGameObjectController.NewGameObject); //PrefabからBrokenRoofTileを複製
                 GameObject brokenRoofTile = prefabController.clonePrefab;
+                brokenRoofTile.GetComponent<RoofTile>().evaluateType = RoofTile.EvaluateType.NOT_EVALUATED; //BrokenRoofTileの評価をNOT_EVALUATEDに設定
                 roofTileController.roofTiles.Add(brokenRoofTile); //複製したBrokenRoofTileをリストに追加
                 break;
             default:
