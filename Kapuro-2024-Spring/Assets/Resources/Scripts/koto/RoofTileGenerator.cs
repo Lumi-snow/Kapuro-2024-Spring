@@ -27,12 +27,14 @@ public class RoofTileGenerator : MonoBehaviour
         {
             GenerateRoofTile(); //瓦を生成
         }
+        
+        GenerateEventRoofTile(); //イベント瓦を生成
     }
 
     //瓦を生成
     public void GenerateRoofTile()
     {
-        int randomValue = UnityEngine.Random.Range(0, roofTileType.Count); //瓦の種類をランダムに決定
+        int randomValue = UnityEngine.Random.Range(0, roofTileType.Count - 1); //瓦の種類をランダムに決定
 
         switch (randomValue)
         {
@@ -52,6 +54,15 @@ public class RoofTileGenerator : MonoBehaviour
                 Debug.Log("Error occured in Generate(), RoofTileGenerator");
                 break;
         }
+    }
+
+    private void GenerateEventRoofTile()
+    {
+        int randomValue = UnityEngine.Random.Range(0, roofTileController.allRoofTileNum - 1); //瓦の種類をランダムに決定
+        
+        prefabController.InstantiatePrefab("EventRoofTile", Vector3.zero, Quaternion.identity, addGameObjectController.NewGameObject); //PrefabからEventRoofTileを複製
+        GameObject eventRoofTile = prefabController.clonePrefab;
+        roofTileController.roofTiles.Insert(randomValue, eventRoofTile); //複製したEventRoofTileをリストに追加
     }
 
     //DEBUG Listの中身を表示

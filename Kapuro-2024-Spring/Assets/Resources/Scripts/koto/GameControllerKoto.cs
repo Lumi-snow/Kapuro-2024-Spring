@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameControllerKoto : AbstractGameController
 {
     [SerializeField] private RoofTileController roofTileController;
+    [SerializeField] private BossController bossController;
     [SerializeField] private UIControllerKoto uiControllerKoto;
     private void Awake()
     {
@@ -14,6 +15,7 @@ public class GameControllerKoto : AbstractGameController
     private void Start()
     {
         roofTileController.Initialize(); //瓦関係の処理の初期化
+        bossController.Initialize(); //ボス関係の処理の初期化
     }
 
     private void Update()

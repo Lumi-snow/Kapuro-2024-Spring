@@ -1,17 +1,18 @@
 using System.Collections.Generic;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 
 //RoofTileに関連する処理を行うクラス
 public class RoofTileController : MonoBehaviour
 {
     public List<GameObject> roofTiles; //生成した瓦のリスト
+    public GameObject boss;
     public int allRoofTileNum; //生成する瓦の総数
     
     [SerializeField] private RoofTileGenerator roofTileGenerator;
     [SerializeField] private RoofTileDisplayer roofTileDisplayer;
     [SerializeField] private RoofTileEvaluater roofTileEvaluater;
     [SerializeField] private RoofTileDestroyer roofTileDestroyer;
+    [SerializeField] private RoofTileEventHandler roofTileEventHandler;
     [SerializeField] private ScoreController scoreController;
     
     //初期化処理

@@ -9,6 +9,7 @@ public class RoofTileEvaluater : MonoBehaviour
 {
     [SerializeField] private ScoreController scoreController; //スコアを管理するクラス
     [SerializeField] private RoofTileController roofTileController; //瓦を管理するクラス
+    [SerializeField] private RoofTileEventHandler roofTileEventHandler; //瓦のイベントを管理するクラス
 
     //瓦の評価を行う
     public void EvaluateRoofTile(GameObject currentRoofTile)
@@ -23,11 +24,18 @@ public class RoofTileEvaluater : MonoBehaviour
                     case RoofTile.RoofTileType.NORMAL: //瓦が普通の場合
                         SendCorrect();
                         scoreController.AddScore(currentRoofTile.GetComponent<RoofTile>().Score); //スコアを加算
-                        currentRoofTile.GetComponent<RoofTile>().evaluateType = RoofTile.EvaluateType.INCORRECT; //評価を不正解にする
+                        currentRoofTile.GetComponent<RoofTile>().evaluateType = RoofTile.EvaluateType.INCORRECT; //評価を正解にする
                         break;
                     case RoofTile.RoofTileType.BROKEN: //瓦が壊れている場合
                         SendIncorrect();
+                        currentRoofTile.GetComponent<RoofTile>().evaluateType = RoofTile.EvaluateType.CORRECT; //評価を不正解にする
+                        break;
+                    case RoofTile.RoofTileType.EVENT: //瓦がイベントの場合
+                        SendIncorrect();
+                        scoreController.AddScore(currentRoofTile.GetComponent<RoofTile>().Score); //スコアを加算
                         currentRoofTile.GetComponent<RoofTile>().evaluateType = RoofTile.EvaluateType.CORRECT; //評価を正解にする
+                        roofTileEventHandler.SetEvent(); //イベントを発生させる
+                        roofTileEventHandler.EventHandler(); //イベントの生成
                         break;
                     default:
                         break;
@@ -41,12 +49,18 @@ public class RoofTileEvaluater : MonoBehaviour
                 {
                     case RoofTile.RoofTileType.NORMAL: //瓦が普通の場合
                         SendIncorrect();
-                        currentRoofTile.GetComponent<RoofTile>().evaluateType = RoofTile.EvaluateType.CORRECT; //評価を正解にする
+                        currentRoofTile.GetComponent<RoofTile>().evaluateType = RoofTile.EvaluateType.INCORRECT; //評価を不正解にする
                         break;
                     case RoofTile.RoofTileType.BROKEN: //瓦が壊れている場合
                         SendCorrect();
                         scoreController.AddScore(currentRoofTile.GetComponent<RoofTile>().Score); //スコアを加算
+                        currentRoofTile.GetComponent<RoofTile>().evaluateType = RoofTile.EvaluateType.CORRECT; //評価を正解にする
+                        break;
+                    case RoofTile.RoofTileType.EVENT:
+                        SendIncorrect();
                         currentRoofTile.GetComponent<RoofTile>().evaluateType = RoofTile.EvaluateType.INCORRECT; //評価を不正解にする
+                        roofTileEventHandler.SetEvent(); //イベントを発生させる
+                        roofTileEventHandler.EventHandler(); //イベントの生成
                         break;
                     default:
                         break;

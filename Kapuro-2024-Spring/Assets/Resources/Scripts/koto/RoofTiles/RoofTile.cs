@@ -8,7 +8,8 @@ public abstract class RoofTile : MonoBehaviour
     public enum RoofTileType
     {
         NORMAL,
-        BROKEN
+        BROKEN,
+        EVENT,
     }
 
     public enum EvaluateType
