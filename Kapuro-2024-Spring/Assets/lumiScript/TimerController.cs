@@ -21,7 +21,7 @@ public class TimerController : MonoBehaviour
 
         if (CountDownTime <= 0.0F)
         {
-            CountDownTime = 0.0F;
+            SceneController.ChangeScene("lumiEnd");
         }
     }
 }
