@@ -10,13 +10,13 @@ public class TimerController : MonoBehaviour
     public Text TextCountDown;
     void Start()
     {
-     CountDownTime = 30.0F;   
+     CountDownTime = 20.0F;   
     }
 
     // Update is called once per frame
     void Update()
     {
-        TextCountDown.text = String.Format("Time:{0:00.00}",CountDownTime);
+        TextCountDown.text = String.Format("‚Ì‚±‚è‚¶‚©‚ñ:{0:00.00}",CountDownTime);
         CountDownTime -= Time.deltaTime;
 
         if (CountDownTime <= 0.0F)
