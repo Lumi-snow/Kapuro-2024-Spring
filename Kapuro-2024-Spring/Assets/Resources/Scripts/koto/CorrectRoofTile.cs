@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-//•’Ê‚ÌŠ¢
+//æ™®é€šã®ç“¦
 public class CorrectRoofTile : RoofTile
 {
     

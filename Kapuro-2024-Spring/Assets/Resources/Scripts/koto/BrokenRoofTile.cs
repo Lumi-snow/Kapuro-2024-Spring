@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//‰ó‚ê‚½Š¢
+//å£Šã‚ŒãŸç“¦
 public class BrokenRoofTile : RoofTile
 {
 

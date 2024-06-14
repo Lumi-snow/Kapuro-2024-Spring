@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//Š¢‚Ì’ŠÛƒNƒ‰ƒX
+//ç“¦ã®æŠ½è±¡ã‚¯ãƒ©ã‚¹
 public abstract class RoofTile
 {
 
