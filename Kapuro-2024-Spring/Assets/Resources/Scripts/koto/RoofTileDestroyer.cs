@@ -30,7 +30,36 @@ public class RoofTileDestroyer : MonoBehaviour
                     return false;
             }
         }
-
+        
         return false;
+    }
+    
+    //ボス撃破時関連の瓦を破棄する
+    public void DestroySpecialRoofTileForBoss(GameObject roofTile)
+    {
+        if(roofTile != null)
+        {
+            switch(roofTile.GetComponent<RoofTile>().roofTileType)
+            {
+                case RoofTile.RoofTileType.KAWARA_YOKAI_DESCENDANT:
+                    roofTileController.roofTiles.Remove(roofTile);
+                    Destroy(roofTile);
+                    break;
+            }
+        }
+    }
+    
+    public void DestroySpecialRoofTileForCurrentIndex1and2(GameObject index1, GameObject index2)
+    {
+        if(index1 != null && index2 != null)
+        {
+            if(index1.GetComponent<RoofTile>().roofTileType == RoofTile.RoofTileType.KAWARA_YOKAI_DESCENDANT)
+            {
+                roofTileController.roofTiles.Remove(index1);
+                Destroy(index1);
+                roofTileController.roofTiles.Remove(index2);
+                Destroy(index2);
+            }
+        }
     }
 }

@@ -13,4 +13,11 @@ public class CorrectRoofTile : RoofTile
         get => scoreCorrectRoofTile;
         set => scoreCorrectRoofTile = value;
     }
+    
+    private int correctRoofTileAtackPower = 0; //UŒ‚—Í
+    public override int AttackPower //UŒ‚—Í‚ÌƒvƒƒpƒeƒB
+    {
+        get => correctRoofTileAtackPower;
+        set => correctRoofTileAtackPower = value;
+    }
 }

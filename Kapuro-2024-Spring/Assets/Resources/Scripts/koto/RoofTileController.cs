@@ -5,7 +5,6 @@ using UnityEngine;
 public class RoofTileController : MonoBehaviour
 {
     public List<GameObject> roofTiles; //生成した瓦のリスト
-    public GameObject boss;
     public int allRoofTileNum; //生成する瓦の総数
     
     [SerializeField] private RoofTileGenerator roofTileGenerator;
@@ -39,6 +38,26 @@ public class RoofTileController : MonoBehaviour
             SetNewRoofTile();
         }
     }
+    
+    public void DestroySpecialRoofTileForBoss()
+    {
+        roofTileDestroyer.DestroySpecialRoofTileForCurrentIndex1and2(GetCurrentRoofTile(), GetSpecialRoofTileIndex1());
+        roofTileDestroyer.DestroySpecialRoofTileForBoss(GetSpecialRoofTileIndex2());
+        SetNewRoofTile();
+    }
+
+    public void GenerateRoofTileInTime()
+    {
+        for (int i = 0; i < 2; i++)
+        {
+            roofTileGenerator.GenerateRoofTile();
+        }
+    }
+    
+    public void GenerateSpecialRoofTileForBoss()
+    {
+        roofTileGenerator.GenerateSpecialRoofTileForBoss();
+    }
 
     //新しく瓦をセットする
     private void SetNewRoofTile()
@@ -46,16 +65,6 @@ public class RoofTileController : MonoBehaviour
         roofTileDisplayer.SetRoofTile();
         roofTileDisplayer.ActivateRoofTile();
         roofTileDisplayer.HideRoofTile();
-    }
-
-    //ゲーム終了時の処理
-    public void GameEndProcess()
-    {
-        //TODO: ゲーム終了時の処理を追加
-        if (roofTiles.Count == 0)
-        {
-            SceneController.ChangeSceneToTitle();
-        }
     }
     
     //現在の瓦を取得する
@@ -70,4 +79,30 @@ public class RoofTileController : MonoBehaviour
             return null;
         }
     }
+
+    private GameObject GetSpecialRoofTileIndex2()
+    {
+        if(roofTiles.Count > 2)
+        {
+            return roofTiles[2];
+        }
+        else
+        {
+            return null;
+        }
+    }
+
+    private GameObject GetSpecialRoofTileIndex1()
+    {
+        if(roofTiles.Count > 1)
+        {
+            return roofTiles[1];
+        }
+        else
+        {
+            return null;
+        }
+    }
+    
+    
 }

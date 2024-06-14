@@ -29,7 +29,7 @@ public class BossGenerater : MonoBehaviour
         switch (eventType)
         {
             case ConstantNumberKoto.ConstantNumberKoto.EVENT_TYPE.BOSS_YOKAI01:
-                prefabController.InstantiatePrefab("Boss01", Vector3.zero, Quaternion.identity, addGameObjectController.NewGameObject);
+                prefabController.InstantiatePrefab("KawaraYokai", Vector3.zero, Quaternion.identity, addGameObjectController.NewGameObject);
                 bossController.boss = prefabController.clonePrefab;
                 break;
             case ConstantNumberKoto.ConstantNumberKoto.EVENT_TYPE.BOSS_YOKAI02: 

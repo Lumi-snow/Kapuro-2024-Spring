@@ -10,6 +10,7 @@ public abstract class RoofTile : MonoBehaviour
         NORMAL,
         BROKEN,
         EVENT,
+        KAWARA_YOKAI_DESCENDANT,
     }
 
     public enum EvaluateType
@@ -21,11 +22,7 @@ public abstract class RoofTile : MonoBehaviour
     
     public abstract RoofTileType roofTileType { get; } // RoofTileType を抽象プロパティとして宣言
     public abstract EvaluateType evaluateType { get; set; } // EvaluateType を抽象プロパティとして宣言
-
-    private int score = 0;
-    public abstract int Score
-    {
-        get;
-        set;
-    }
+    
+    public abstract int Score { get; set; }
+    public abstract int AttackPower { get; set; }
 }

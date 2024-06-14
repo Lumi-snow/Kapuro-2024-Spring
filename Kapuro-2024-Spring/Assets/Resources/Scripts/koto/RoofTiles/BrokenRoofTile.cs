@@ -14,4 +14,11 @@ public class BrokenRoofTile : RoofTile
         get => scoreBrokenRoofTile;
         set => scoreBrokenRoofTile = value;
     }
+    
+    private int brokenAtackPower = 0; //UŒ‚—Í
+    public override int AttackPower //UŒ‚—Í‚ÌƒvƒƒpƒeƒB
+    {
+        get => brokenAtackPower;
+        set => brokenAtackPower = value;
+    }
 }

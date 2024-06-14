@@ -20,4 +20,11 @@ public class EventRoofTile : RoofTile
         get => scoreBrokenRoofTile;
         set => scoreBrokenRoofTile = value;
     }
+    
+    private int eventRoofTileAtackPower = 0; //攻撃力
+    public override int AttackPower //攻撃力のプロパティ
+    {
+        get => eventRoofTileAtackPower;
+        set => eventRoofTileAtackPower = value;
+    }
 }

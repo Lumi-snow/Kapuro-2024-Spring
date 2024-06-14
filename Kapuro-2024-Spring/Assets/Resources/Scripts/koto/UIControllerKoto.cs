@@ -8,7 +8,13 @@ public class UIControllerKoto : MonoBehaviour
     [SerializeField] private ScoreController scoreController;
 
     [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private TextMeshProUGUI bossExpressionText;
 
+    public void Initialize()
+    {
+        
+    }
+    
     public void UpdateScoreText()
     {
         scoreText.text = "Score: " + scoreController.AccumulatedScore;
