@@ -36,7 +36,7 @@ public class RoofTileGenerator : MonoBehaviour
     public void GenerateRoofTile()
     {
         int randomValue = UnityEngine.Random.Range(0, roofTileType.Count - 2); //瓦の種類をランダムに決定
-        int randomIndex = UnityEngine.Random.Range(3, (roofTileController.allRoofTileNum - 1) / 2); //どのタイミングで出現させるかをランダムに決定
+        int randomIndex = UnityEngine.Random.Range(3, (roofTileController.roofTiles.Count - 1) / 2); //どのタイミングで出現させるかをランダムに決定
 
         if (bossController.boss == null)
         {
@@ -91,7 +91,7 @@ public class RoofTileGenerator : MonoBehaviour
                 {
                     for(int i = 0 ; i < bossController.boss.GetComponent<AbstractBoss>().AllDescendantNum ; i++)
                     {
-                        int randomValue = UnityEngine.Random.Range(3, (roofTileController.allRoofTileNum - 1) / 2); //どのタイミングで出現させるかをランダムに決定
+                        int randomValue = UnityEngine.Random.Range(3, (roofTileController.roofTiles.Count - 1) / 2); //どのタイミングで出現させるかをランダムに決定
                         prefabController.InstantiatePrefab("KawaraYokai'sDescendant", Vector3.zero, Quaternion.identity, addGameObjectController.NewGameObject); //PrefabからKawaraYokaiを複製
                         GameObject kawaraYokaisDescendant = prefabController.clonePrefab;
                         kawaraYokaisDescendant.GetComponent<RoofTile>().evaluateType = RoofTile.EvaluateType.NOT_EVALUATED; //KawaraYokaiの評価をNOT_EVALUATEDに設定
