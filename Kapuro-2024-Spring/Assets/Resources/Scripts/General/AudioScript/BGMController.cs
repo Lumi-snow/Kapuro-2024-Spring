@@ -8,7 +8,7 @@ namespace AudioController
 
         private AudioPlayer audioPlayer => audioPlayerList[0]; //再生に使っているプレイヤークラス
 
-        public static readonly string AUDIO_DIRECTORY_PATH = "BGM"; //オーディオファイルが入っているディレクトリへのパス
+        public static readonly string AUDIO_DIRECTORY_PATH = "Audio/BGM"; //オーディオファイルが入っているディレクトリへのパス
 
         /*初期化*/
         //起動時に実行

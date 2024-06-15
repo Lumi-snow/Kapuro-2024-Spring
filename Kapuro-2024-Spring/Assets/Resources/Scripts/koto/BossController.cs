@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using AudioController;
 using UnityEngine;
 
 public class BossController : MonoBehaviour
@@ -10,6 +11,13 @@ public class BossController : MonoBehaviour
     {
         get => isBossDead;
         set => isBossDead = value;
+    }
+    
+    private bool isBossDaedBGM = false;
+    public bool IsBossDeadBGM
+    {
+        get => isBossDaedBGM;
+        set => isBossDaedBGM = value;
     }
 
     [SerializeField] private BossGenerater bossGenerater;
@@ -40,5 +48,22 @@ public class BossController : MonoBehaviour
     {
         if(boss != null)
             bossDestroyer.DestroyBoss();
+    }
+
+    public void SetBossBGM()
+    {
+        if (boss != null &&
+            boss.GetComponent<AbstractBoss>().Hp < boss.GetComponent<AbstractBoss>().HpMax / 2 &&
+            boss.GetComponent<AbstractBoss>().IsBossHpHalf == false) //Hpが半分未満なら 
+        {
+            BGMSwitcher.CrossFade(BGMPath.BossBGM01, 3);
+            boss.GetComponent<AbstractBoss>().IsBossHpHalf = true;
+        }
+        
+        if (IsBossDead == true && IsBossDeadBGM == false) //ボスが破棄されているなら
+        {
+            BGMSwitcher.CrossFade(BGMPath.NormalBGM01, 3);
+            IsBossDeadBGM = true;
+        }
     }
 }

@@ -1,3 +1,4 @@
+using AudioController;
 using UnityEngine;
 
 public class RoofTileEventHandler : MonoBehaviour
@@ -11,6 +12,7 @@ public class RoofTileEventHandler : MonoBehaviour
         {
             case ConstantNumberKoto.ConstantNumberKoto.EVENT_TYPE.BOSS_YOKAI01:
                 bossGenerater.GenerateBoss(eventType);
+                BGMSwitcher.CrossFade(BGMPath.BossBGM02, 3);
                 break;
             case ConstantNumberKoto.ConstantNumberKoto.EVENT_TYPE.BOSS_YOKAI02:
                 bossGenerater.GenerateBoss(eventType);

@@ -15,6 +15,9 @@ public abstract class AbstractBoss : MonoBehaviour
     };
     public abstract BossType bossType { get; }
 
+    private int hpMax;
+    public abstract int HpMax { get; }
+    
     private int hp;
     public abstract int Hp { get; set; }
     
@@ -23,4 +26,7 @@ public abstract class AbstractBoss : MonoBehaviour
     
     private bool isAllDescendantDead;
     public abstract bool IsAllDescendantDead { get; set; }
+    
+    private bool isBossHpHalf;
+    public abstract bool IsBossHpHalf { get; set; }
 }

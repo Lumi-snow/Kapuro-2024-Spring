@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using Cysharp.Threading.Tasks;
-using Unity.VisualScripting;
+using AudioController;
 using UnityEngine;
 
 //RoofTileが正しく仕訳けられたか評価するクラス
@@ -20,6 +17,7 @@ public class RoofTileEvaluater : MonoBehaviour
             //瓦を置く
             if(Input.GetKeyDown(KeyCode.RightArrow) == true)
             {
+                SEController.Instance.Play(SEPath.PutAndThrowRoofTile);
                 switch (currentRoofTile.GetComponent<RoofTile>().roofTileType)
                 {
                     case RoofTile.RoofTileType.NORMAL: //瓦が普通の場合
@@ -46,6 +44,7 @@ public class RoofTileEvaluater : MonoBehaviour
             //瓦を捨てる
             if (Input.GetKeyDown(KeyCode.LeftArrow) == true)
             {
+                SEController.Instance.Play(SEPath.PutAndThrowRoofTile);
                 switch (currentRoofTile.GetComponent<RoofTile>().roofTileType)
                 {
                     case RoofTile.RoofTileType.NORMAL: //瓦が普通の場合
@@ -71,6 +70,7 @@ public class RoofTileEvaluater : MonoBehaviour
             //特殊動作
             if (Input.GetKeyDown(KeyCode.Space) == true)
             {
+                AudioUtilizer.AudioUtilizer.PlayRandomAttackSE();
                 switch (currentRoofTile.GetComponent<RoofTile>().roofTileType)
                 {
                     case RoofTile.RoofTileType.KAWARA_YOKAI_DESCENDANT:

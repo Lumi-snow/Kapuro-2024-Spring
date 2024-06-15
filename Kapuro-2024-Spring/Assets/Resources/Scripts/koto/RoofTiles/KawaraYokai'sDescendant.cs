@@ -14,7 +14,7 @@ public class KawaraYokaisDescendant : RoofTile
         set => KawaraYokaisDescendantscore = value;
     }
     
-    private int KawaraYokaisDescendantAtackPower = 15;
+    private int KawaraYokaisDescendantAtackPower = 22;
     public override int AttackPower
     {
         get => KawaraYokaisDescendantAtackPower;

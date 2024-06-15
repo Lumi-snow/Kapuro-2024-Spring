@@ -10,15 +10,17 @@ public class BossYokai01 : AbstractBoss
     
     public override BossType bossType => BossType.KAWARA_YOKAI; // bossType プロパティをオーバーライド
     
-    private int kawaraYokaihp = 300;
-
+    public const int hpMax = 1000; // 最大HP
+    public override int HpMax { get => hpMax;}
+    
+    private int kawaraYokaihp = 1000;
     public override int Hp
     {
         get => kawaraYokaihp;
         set => kawaraYokaihp = value;
     }
 
-    private int allKawaraYokaisDescendantNum = 30;
+    private int allKawaraYokaisDescendantNum = 50;
     public override int AllDescendantNum 
     { 
         get => this.allKawaraYokaisDescendantNum;
@@ -31,5 +33,12 @@ public class BossYokai01 : AbstractBoss
     {
         get => isAllKawaraYokaisDescendantDead; 
         set => isAllKawaraYokaisDescendantDead = value;
+    }
+    
+    private bool isKawaraYokaiHpHalf = false;
+    public override bool IsBossHpHalf
+    {
+        get => isKawaraYokaiHpHalf;
+        set => isKawaraYokaiHpHalf = value;
     }
 }
