@@ -14,7 +14,7 @@ public abstract class SingletonWithMonoBehaviour<TYpe> : MonoBehaviour, IDisposa
         {
             //�A�T�[�g(Assert)�́A�v���O�����̎��s���ɓ���̏��������藧���Ă��邱�Ƃ����؂��邽�߂̎d�g��
             //�����null�̏ꍇ�A�G���[��\�����v���O�����̎��s���~����B
-            Assert.IsNotNull(instance, "There is no object attached" + typeof(TYpe).Name);
+            Assert.IsNotNull(instance, "There is no object attached " + typeof(TYpe).Name);
             return instance;
         }
     }
