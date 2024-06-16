@@ -25,6 +25,16 @@ public class RoofTileEvaluater : MonoBehaviour
                         scoreController.AddScore(currentRoofTile.GetComponent<RoofTile>().Score); //スコアを加算
                         currentRoofTile.GetComponent<RoofTile>().evaluateType = RoofTile.EvaluateType.INCORRECT; //評価を正解にする
                         break;
+                    case RoofTile.RoofTileType.EXPENSIVE: //瓦が高価な場合
+                        SendCorrect();
+                        scoreController.AddScore(currentRoofTile.GetComponent<RoofTile>().Score); //スコアを加算
+                        currentRoofTile.GetComponent<RoofTile>().evaluateType = RoofTile.EvaluateType.CORRECT; //評価を正解にする
+                        break;
+                    case RoofTile.RoofTileType.LEGEND: //瓦が伝説の場合
+                        SendCorrect();
+                        scoreController.AddScore(currentRoofTile.GetComponent<RoofTile>().Score); //スコアを加算
+                        currentRoofTile.GetComponent<RoofTile>().evaluateType = RoofTile.EvaluateType.CORRECT; //評価を正解にする
+                        break;
                     case RoofTile.RoofTileType.BROKEN: //瓦が壊れている場合
                         SendIncorrect();
                         currentRoofTile.GetComponent<RoofTile>().evaluateType = RoofTile.EvaluateType.CORRECT; //評価を不正解にする
@@ -50,6 +60,14 @@ public class RoofTileEvaluater : MonoBehaviour
                     case RoofTile.RoofTileType.NORMAL: //瓦が普通の場合
                         SendIncorrect();
                         currentRoofTile.GetComponent<RoofTile>().evaluateType = RoofTile.EvaluateType.INCORRECT; //評価を不正解にする
+                        break;
+                    case RoofTile.RoofTileType.EXPENSIVE: //瓦が高価な場合
+                        SendIncorrect();
+                        currentRoofTile.GetComponent<RoofTile>().evaluateType = RoofTile.EvaluateType.CORRECT; //評価を不正解にする
+                        break;
+                    case RoofTile.RoofTileType.LEGEND: //瓦が伝説の場合
+                        SendIncorrect();
+                        currentRoofTile.GetComponent<RoofTile>().evaluateType = RoofTile.EvaluateType.CORRECT; //評価を不正解にする
                         break;
                     case RoofTile.RoofTileType.BROKEN: //瓦が壊れている場合
                         SendCorrect();

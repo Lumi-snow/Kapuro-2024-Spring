@@ -8,6 +8,8 @@ public abstract class RoofTile : MonoBehaviour
     public enum RoofTileType
     {
         NORMAL,
+        EXPENSIVE,
+        LEGEND,
         BROKEN,
         EVENT,
         KAWARA_YOKAI_DESCENDANT,

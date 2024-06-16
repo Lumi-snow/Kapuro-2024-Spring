@@ -380,6 +380,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roofTileType:
   - {fileID: 3963400191648828892, guid: aac20b12ceb844e4999762ea27556b32, type: 3}
+  - {fileID: 3963400191648828892, guid: 9f26ff62a5a5b364e90799fb66de3fe1, type: 3}
+  - {fileID: 3963400191648828892, guid: c1390a331bd9f3046a9f83ae24d1092e, type: 3}
   - {fileID: 3963400191648828892, guid: 3912eb564751ef6408e8c04cc54caa79, type: 3}
   - {fileID: 9033923490632815904, guid: d166284b44d77794ba6f2d5c3126fbcd, type: 3}
   - {fileID: 5175058974315574278, guid: e290fcd43fc71cc428cf61fbf5099749, type: 3}
@@ -658,8 +660,11 @@ MonoBehaviour:
   prefabController: {fileID: 644044494}
   addGameObjectController: {fileID: 1527553600}
   scoreText: {fileID: 1481926655}
-  Popup: {fileID: 0}
-  popUpPrefab: {fileID: 2473972639097616233, guid: 4b06b5116edca3a4b82f78386e2dc2ac, type: 3}
+  popupParent: {fileID: 0}
+  popupPrefabList:
+  - {fileID: 2473972639097616233, guid: 4b06b5116edca3a4b82f78386e2dc2ac, type: 3}
+  - {fileID: 3262559874464393185, guid: 4fedc93479e3fef4dacb1404a1037201, type: 3}
+  popupListForBoss: []
 --- !u!1 &357088584
 GameObject:
   m_ObjectHideFlags: 0
@@ -857,6 +862,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossController: {fileID: 1520961372}
+  uiControllerKoto: {fileID: 353453846}
 --- !u!1 &521067473
 GameObject:
   m_ObjectHideFlags: 0

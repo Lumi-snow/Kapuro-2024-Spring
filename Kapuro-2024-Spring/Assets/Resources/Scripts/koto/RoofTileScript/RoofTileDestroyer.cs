@@ -50,6 +50,7 @@ public class RoofTileDestroyer : MonoBehaviour
         }
     }
     
+    //特定のインデックスの瓦を破棄する
     public void DestroySpecialRoofTileForCurrentIndex1and2(GameObject index1, GameObject index2)
     {
         if(index1 != null && index2 != null)

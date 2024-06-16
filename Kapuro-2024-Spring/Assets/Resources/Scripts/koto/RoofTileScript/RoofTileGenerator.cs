@@ -51,7 +51,19 @@ public class RoofTileGenerator : MonoBehaviour
                     correctRoofTile.GetComponent<RoofTile>().evaluateType = RoofTile.EvaluateType.NOT_EVALUATED; //CorrectRoofTileの評価をNOT_EVALUATEDに設定
                     roofTileController.roofTiles.Add(correctRoofTile); //複製したCorrectRoofTileをリストに追加
                     break;
-                case 1: //BrokenRoofTileを生成
+                case 1: //ExpensiveRoofTileを生成
+                    prefabController.InstantiatePrefab("ExpensiveRoofTile", Vector3.zero, Quaternion.identity, roofTile); //PrefabからExpensiveRoofTileを複製
+                    GameObject expensiveRoofTile = prefabController.clonePrefab;
+                    expensiveRoofTile.GetComponent<RoofTile>().evaluateType = RoofTile.EvaluateType.NOT_EVALUATED; //ExpensiveRoofTileの評価をNOT_EVALUATEDに設定
+                    roofTileController.roofTiles.Add(expensiveRoofTile); //複製したExpensiveRoofTileをリストに追加
+                    break;
+                case 2: //LegendRoofTileを生成
+                    prefabController.InstantiatePrefab("LegendRoofTile", Vector3.zero, Quaternion.identity, roofTile); //PrefabからLegendRoofTileを複製
+                    GameObject legendRoofTile = prefabController.clonePrefab;
+                    legendRoofTile.GetComponent<RoofTile>().evaluateType = RoofTile.EvaluateType.NOT_EVALUATED; //LegendRoofTileの評価をNOT_EVALUATEDに設定
+                    roofTileController.roofTiles.Add(legendRoofTile); //複製したLegendRoofTileをリストに追加
+                    break;
+                case 3: //BrokenRoofTileを生成
                     prefabController.InstantiatePrefab("BrokenRoofTile", Vector3.zero, Quaternion.identity, roofTile); //PrefabからBrokenRoofTileを複製
                     GameObject brokenRoofTile = prefabController.clonePrefab;
                     brokenRoofTile.GetComponent<RoofTile>().evaluateType = RoofTile.EvaluateType.NOT_EVALUATED; //BrokenRoofTileの評価をNOT_EVALUATEDに設定
@@ -72,7 +84,19 @@ public class RoofTileGenerator : MonoBehaviour
                     correctRoofTile.GetComponent<RoofTile>().evaluateType = RoofTile.EvaluateType.NOT_EVALUATED; //CorrectRoofTileの評価をNOT_EVALUATEDに設定
                     roofTileController.roofTiles.Insert(randomIndex, correctRoofTile); //複製したCorrectRoofTileをリストに追加
                     break;
-                case 1: //BrokenRoofTileを生成
+                case 1: //ExpensiveRoofTileを生成
+                    prefabController.InstantiatePrefab("ExpensiveRoofTile", Vector3.zero, Quaternion.identity, roofTile); //PrefabからExpensiveRoofTileを複製
+                    GameObject expensiveRoofTile = prefabController.clonePrefab;
+                    expensiveRoofTile.GetComponent<RoofTile>().evaluateType = RoofTile.EvaluateType.NOT_EVALUATED; //ExpensiveRoofTileの評価をNOT_EVALUATEDに設定
+                    roofTileController.roofTiles.Insert(randomIndex, expensiveRoofTile); //複製したExpensiveRoofTileをリストに追加
+                    break;
+                case 2: //LegendRoofTileを生成
+                    prefabController.InstantiatePrefab("LegendRoofTile", Vector3.zero, Quaternion.identity, roofTile); //PrefabからLegendRoofTileを複製
+                    GameObject legendRoofTile = prefabController.clonePrefab;
+                    legendRoofTile.GetComponent<RoofTile>().evaluateType = RoofTile.EvaluateType.NOT_EVALUATED; //LegendRoofTileの評価をNOT_EVALUATEDに設定
+                    roofTileController.roofTiles.Add(legendRoofTile); //複製したLegendRoofTileをリストに追加
+                    break;
+                case 3: //BrokenRoofTileを生成
                     prefabController.InstantiatePrefab("BrokenRoofTile", Vector3.zero, Quaternion.identity, roofTile); //PrefabからBrokenRoofTileを複製
                     GameObject brokenRoofTile = prefabController.clonePrefab;
                     brokenRoofTile.GetComponent<RoofTile>().evaluateType = RoofTile.EvaluateType.NOT_EVALUATED; //BrokenRoofTileの評価をNOT_EVALUATEDに設定
@@ -127,22 +151,5 @@ public class RoofTileGenerator : MonoBehaviour
         GameObject eventRoofTile = prefabController.clonePrefab;
         eventRoofTile.GetComponent<RoofTile>().evaluateType = RoofTile.EvaluateType.NOT_EVALUATED; //EventRoofTileの評価をNOT_EVALUATEDに設定
         roofTileController.roofTiles.Insert(generateIndex, eventRoofTile); //複製したEventRoofTileをリストに追加
-    }
-
-    //DEBUG Listの中身を表示
-    private void PrintList()
-    {
-        foreach(GameObject _roofTile in roofTileController.roofTiles)
-        {
-            if (_roofTile != null)
-            {
-                Debug.Log("瓦誕生！");
-                Debug.Log(_roofTile.GetType().Name);
-            }
-            else
-            {
-                Debug.Log("Error occured in PrintList(), RoofGenerator");
-            }   
-        }
     }
 }

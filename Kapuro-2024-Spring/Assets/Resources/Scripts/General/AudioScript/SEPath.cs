@@ -11,6 +11,7 @@ namespace AudioController
         public const string DestroyBoss = "DestroyBoss";
         public const string PutAndThrowRoofTile = "PutAndThrowRoofTile";
         public const string OnExpressMessage = "OnExpressMessage";
+        public const string BossExpression01 = "BossExpression01";
     }
 }
 

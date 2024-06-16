@@ -1,4 +1,5 @@
 using System.Collections;
+using AudioController;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -30,9 +31,11 @@ public class BossGenerater : MonoBehaviour
         switch (eventType)
         {
             case ConstantNumberKoto.ConstantNumberKoto.EVENT_TYPE.BOSS_YOKAI01:
+                SEController.Instance.Play(SEPath.BossExpression01);
                 prefabController.InstantiatePrefab("KawaraYokai", Vector3.zero, Quaternion.identity, addGameObjectController.NewGameObject);
                 bossController.boss = prefabController.clonePrefab;
                 uiControllerKoto.OnExpressBossExpressionText();
+                uiControllerKoto.PressSpaceText();
                 break;
             case ConstantNumberKoto.ConstantNumberKoto.EVENT_TYPE.BOSS_YOKAI02: 
                 prefabController.InstantiatePrefab("Boss02", Vector3.zero, Quaternion.identity, addGameObjectController.NewGameObject);

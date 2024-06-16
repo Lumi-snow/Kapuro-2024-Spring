@@ -6,6 +6,7 @@ using UnityEngine;
 public class BossDestroyer : MonoBehaviour
 {
     [SerializeField] private BossController bossController;
+    [SerializeField] private UIControllerKoto uiControllerKoto;
 
     public void DestroyBoss()
     {
@@ -13,6 +14,7 @@ public class BossDestroyer : MonoBehaviour
         {
             //ここに破棄時の処理を書く
             SEController.Instance.Play(SEPath.DestroyBoss);
+            uiControllerKoto.DeflaggerForBossDestroy();
             Destroy(bossController.boss);
             bossController.IsBossDead = true;
         }
