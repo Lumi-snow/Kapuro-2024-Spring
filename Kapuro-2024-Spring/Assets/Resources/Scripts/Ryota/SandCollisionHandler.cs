@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class SandCollisionHandler : MonoBehaviour
 {
+    GameObject sandGenerator;
+
+    void Start()
+    {
+        this.sandGenerator = GameObject.Find("SandGenerator");
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         // 衝突したオブジェクトの情報を取得
@@ -15,7 +22,8 @@ public class SandCollisionHandler : MonoBehaviour
 
             if (myLevel == otherLevel)
             {
-                Debug.Log("合体！ (Level " + otherLevel + ")");
+                sandGenerator.GetComponent<SandGenerator>().createLevelUpSand(gameObject, collidedObject);
+                Destroy(gameObject);
             }
         }
     }
