@@ -46,6 +46,14 @@ public class RoofTileDestroyer : MonoBehaviour
                     roofTileController.roofTiles.Remove(roofTile);
                     Destroy(roofTile);
                     break;
+                case RoofTile.RoofTileType.SHISHIGAWARA_WATER:
+                    roofTileController.roofTiles.Remove(roofTile);
+                    Destroy(roofTile);
+                    break;
+                case RoofTile.RoofTileType.SHISHIGAWARA_WHISTLE:
+                    roofTileController.roofTiles.Remove(roofTile);
+                    Destroy(roofTile);
+                    break;
             }
         }
     }
@@ -56,6 +64,13 @@ public class RoofTileDestroyer : MonoBehaviour
         if(index1 != null && index2 != null)
         {
             if(index1.GetComponent<RoofTile>().roofTileType == RoofTile.RoofTileType.KAWARA_YOKAI_DESCENDANT)
+            {
+                roofTileController.roofTiles.Remove(index1);
+                Destroy(index1);
+                roofTileController.roofTiles.Remove(index2);
+                Destroy(index2);
+            }
+            else if(index1.GetComponent<RoofTile>().roofTileType == RoofTile.RoofTileType.SHISHIGAWARA_WATER || index1.GetComponent<RoofTile>().roofTileType == RoofTile.RoofTileType.SHISHIGAWARA_WHISTLE)
             {
                 roofTileController.roofTiles.Remove(index1);
                 Destroy(index1);

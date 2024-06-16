@@ -10,12 +10,13 @@ public class RoofTileEventHandler : MonoBehaviour
     {
         switch(eventType)
         {
-            case ConstantNumberKoto.ConstantNumberKoto.EVENT_TYPE.BOSS_YOKAI01:
+            case ConstantNumberKoto.ConstantNumberKoto.EVENT_TYPE.KAWARAYOKAI:
                 bossGenerater.GenerateBoss(eventType);
                 BGMSwitcher.CrossFade(BGMPath.BossBGM02, 3);
                 break;
-            case ConstantNumberKoto.ConstantNumberKoto.EVENT_TYPE.BOSS_YOKAI02:
+            case ConstantNumberKoto.ConstantNumberKoto.EVENT_TYPE.SHISHIGAWARA:
                 bossGenerater.GenerateBoss(eventType);
+                BGMSwitcher.CrossFade(BGMPath.BossBGM02, 3);
                 break;
             default:
                 break;
@@ -24,15 +25,16 @@ public class RoofTileEventHandler : MonoBehaviour
     
     public void SetEvent() //イベントの種類を決定する
     {
-        int randomValue = UnityEngine.Random.Range(1, 2);
+        int randomValue = UnityEngine.Random.Range(0, 2);
+        Debug.Log(randomValue);
         
         switch (randomValue)
         {
-            case 1:
-                eventType = ConstantNumberKoto.ConstantNumberKoto.EVENT_TYPE.BOSS_YOKAI01;
+            case 0:
+                eventType = ConstantNumberKoto.ConstantNumberKoto.EVENT_TYPE.KAWARAYOKAI;
                 break;
-            case 2:
-                eventType = ConstantNumberKoto.ConstantNumberKoto.EVENT_TYPE.BOSS_YOKAI02;
+            case 1:
+                eventType = ConstantNumberKoto.ConstantNumberKoto.EVENT_TYPE.SHISHIGAWARA;
                 break;
         }
     }

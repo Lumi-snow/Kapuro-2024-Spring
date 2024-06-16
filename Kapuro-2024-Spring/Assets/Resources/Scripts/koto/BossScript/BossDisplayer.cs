@@ -25,11 +25,10 @@ public class BossDisplayer : MonoBehaviour
 
     public void SetBoss()
     {
-        if (bossController.boss != null)
+        if (bossController.boss != null && bossController.boss.GetComponent<AbstractBoss>().IsLocationSet == false)
         {
-            bossController.boss.transform.localPosition = new Vector3(0, 300, 0);
-            bossController.boss.transform.localScale = new Vector3(50, 50, 0);
-            bossController.boss.GetComponent<AbstractBoss>().HpSlider = bossController.boss.GetComponent<AbstractBoss>().Hp;
+            bossController.boss.GetComponent<AbstractBoss>().SetMyself();
+            bossController.boss.GetComponent<AbstractBoss>().IsLocationSet = true;
         }
     }
 }

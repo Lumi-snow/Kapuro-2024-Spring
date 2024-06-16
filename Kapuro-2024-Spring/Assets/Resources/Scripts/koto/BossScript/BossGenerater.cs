@@ -11,6 +11,8 @@ public class BossGenerater : MonoBehaviour
     [SerializeField] private UIControllerKoto uiControllerKoto;
     [SerializeField] private PrefabController prefabController;
     [SerializeField] private AddGameObjectController addGameObjectController;
+
+    [SerializeField] private GameObject ParentObject;
     
     //初期化
     public void Initialize()
@@ -24,22 +26,26 @@ public class BossGenerater : MonoBehaviour
         //空のゲームオブジェクトをCanvasの子として生成
         addGameObjectController.SetPairGameObject("Boss", "Canvas");
         addGameObjectController.AddGameObject();
+        ParentObject = addGameObjectController.NewGameObject;
     }
 
     public void GenerateBoss(ConstantNumberKoto.ConstantNumberKoto.EVENT_TYPE eventType)
     {
         switch (eventType)
         {
-            case ConstantNumberKoto.ConstantNumberKoto.EVENT_TYPE.BOSS_YOKAI01:
+            case ConstantNumberKoto.ConstantNumberKoto.EVENT_TYPE.KAWARAYOKAI:
                 SEController.Instance.Play(SEPath.BossExpression01);
-                prefabController.InstantiatePrefab("KawaraYokai", Vector3.zero, Quaternion.identity, addGameObjectController.NewGameObject);
+                prefabController.InstantiatePrefab("KawaraYokai", Vector3.zero, Quaternion.identity, ParentObject);
                 bossController.boss = prefabController.clonePrefab;
-                uiControllerKoto.OnExpressBossExpressionText();
+                uiControllerKoto.OnExpressBossExpressionText(bossController.boss.name);
                 uiControllerKoto.PressSpaceText();
                 break;
-            case ConstantNumberKoto.ConstantNumberKoto.EVENT_TYPE.BOSS_YOKAI02: 
-                prefabController.InstantiatePrefab("Boss02", Vector3.zero, Quaternion.identity, addGameObjectController.NewGameObject);
+            case ConstantNumberKoto.ConstantNumberKoto.EVENT_TYPE.SHISHIGAWARA: 
+                SEController.Instance.Play(SEPath.BossExpression01);
+                prefabController.InstantiatePrefab("ShishiGawara", Vector3.zero, Quaternion.identity, ParentObject);
                 bossController.boss = prefabController.clonePrefab;
+                uiControllerKoto.OnExpressBossExpressionText(bossController.boss.name);
+                uiControllerKoto.PressSpaceText();
                 break;
         }
     }

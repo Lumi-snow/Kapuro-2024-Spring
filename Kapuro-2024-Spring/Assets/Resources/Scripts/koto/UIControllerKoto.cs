@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using AudioController;
 using TMPro;
 using UnityEngine;
@@ -35,10 +36,18 @@ public class UIControllerKoto : MonoBehaviour
     }
 
     //ボス出現時のポップアップを生成
-    public void OnExpressBossExpressionText()
+    public void OnExpressBossExpressionText(string bossName)
     {
+        StringBuilder newBossName = new StringBuilder();
+        newBossName.Append(bossName);
+        newBossName.Replace("(Clone)", "");
+        
         prefabController.InstantiatePrefab("BossExpression", Vector3.zero, Quaternion.identity, popupParent);
+        
         GameObject bossExpressionPopup = prefabController.clonePrefab;
+        GameObject Text = bossExpressionPopup.transform.GetChild(0).gameObject;
+        Text.GetComponent<TextMeshProUGUI>().text = newBossName + " Appeared!";
+        
         popupListForBoss.Add(bossExpressionPopup);
         bossExpressionPopup.GetComponent<Transform>().transform.localPosition = new Vector3(1200, 200, 0);
         SEController.Instance.Play(SEPath.OnExpressMessage);

@@ -14,17 +14,17 @@ public class EventRoofTile : RoofTile
         get => eventType;
     }
 
-    private int scoreBrokenRoofTile = 50; //スコア
+    /*共通のメンバ変数*/
+    [SerializeField] private int scoreBrokenRoofTile = 50; //スコア
+    
+    /*共通のプロパティ*/
     public override int Score //スコアのプロパティ
     {
         get => scoreBrokenRoofTile;
         set => scoreBrokenRoofTile = value;
     }
     
-    private int eventRoofTileAtackPower = 0; //攻撃力
-    public override int AttackPower //攻撃力のプロパティ
-    {
-        get => eventRoofTileAtackPower;
-        set => eventRoofTileAtackPower = value;
-    }
+    /*固有のメンバ変数*/
+    
+    /*固有のプロパティ*/
 }

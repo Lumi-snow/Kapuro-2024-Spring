@@ -12,6 +12,11 @@ namespace AudioController
         public const string PutAndThrowRoofTile = "PutAndThrowRoofTile";
         public const string OnExpressMessage = "OnExpressMessage";
         public const string BossExpression01 = "BossExpression01";
+        public const string ShishiGawaraWhistle01 = "ShishiGawaraWhistle01";
+        public const string ShishiGawaraWhistle02 = "ShishiGawaraWhistle02";
+        public const string ShishiGawaraWhistle03 = "ShishiGawaraWhistle03";
+        public const string ShishiGawaraWater = "ShishiGawaraWater";
+        public const string ShishiGawaraFailure = "ShishiGawaraFailure";
     }
 }
 

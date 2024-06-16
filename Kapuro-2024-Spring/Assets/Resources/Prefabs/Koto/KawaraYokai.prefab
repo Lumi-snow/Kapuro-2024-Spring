@@ -46,7 +46,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 304f009451a496f4b946e7d76450749b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hpSlider: {fileID: 7520677457610597023}
+  kawaraYokaiHpSlider: {fileID: 7520677457610597023}
+  kawaraYokaihp: 1000
+  isKawaraYokaiHpHalf: 0
+  allKawaraYokaisDescendantNum: 50
+  isAllKawaraYokaisDescendantDead: 0
 --- !u!1 &1990264975463878661
 GameObject:
   m_ObjectHideFlags: 0

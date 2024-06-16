@@ -37,17 +37,10 @@ public class BossController : MonoBehaviour
             bossDisplayer.ActivateBoss();
         }
     }
-
-    public void Attack(int attackPower)
-    {
-        boss.GetComponent<AbstractBoss>().Hp -= attackPower;
-        boss.GetComponent<AbstractBoss>().HpSlider -= attackPower;
-    }
     
     public void DestroyBoss()
     {
-        if(boss != null)
-            bossDestroyer.DestroyBoss();
+        bossDestroyer.DestroyBoss(boss);
     }
 
     public void SetBossBGM()

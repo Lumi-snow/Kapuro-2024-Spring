@@ -1,32 +1,46 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public abstract class AbstractBoss : MonoBehaviour
 {
-    private Slider hpSlider;
-    public abstract float HpSlider { get; set; }
-    
-    public enum BossType
+    public enum BossType //ボスの種類
     {
         KAWARA_YOKAI,
-        BOSS_YOKAI02,
+        SHISHIGAWARA,
     };
     public abstract BossType bossType { get; }
+    
+    /*共通のメンバ変数*/
+    
+    /*共通のプロパティ*/
+    public abstract float HpSlider { get; set; }
+    public abstract int HpMax { get; } //最大HP
+    public abstract int Hp { get; set; } //HP
+    public abstract bool IsBossHpHalf { get; set; } //HPが半分かどうか
+    public abstract bool IsLocationSet { get; set; } //位置が設定されているかどうか
+    
+    /*ここに共通のメンバ関数*/
+    public abstract void SetMyself();
+    
+    /*KawaraYokai固有*/
+    //プロパティ
+    public virtual bool IsAllDescendantDead { get; set; }
+    public virtual int AllDescendantNum { get; set; }
 
-    private int hpMax;
-    public abstract int HpMax { get; }
+    //メンバ関数
+    public virtual void AttackKawaraYokai(int attackPower) { }
+
+    /*ShishiGawara固有*/
+    //プロパティ
+    public virtual Slider AwakingPointSlider { get; set; }
+    public virtual int MaxAwakingPoint { get; }
+    public virtual float AwakingPoint { get; set; }
+    public virtual int AllShishiGawaraWhistleNum { get; set; }
+    public virtual int AllShishiGawaraWaterRoofTileNum { get; set; }
+    public virtual bool IsAwaking { get; set; }
+    public virtual bool IsGenerateShishiGawaraWaterRoofTile { get; set; }
     
-    private int hp;
-    public abstract int Hp { get; set; }
-    
-    private int allDescendantNum;
-    public abstract int AllDescendantNum { get; set; }
-    
-    private bool isAllDescendantDead;
-    public abstract bool IsAllDescendantDead { get; set; }
-    
-    private bool isBossHpHalf;
-    public abstract bool IsBossHpHalf { get; set; }
+    //メンバ関数
+    public virtual void AddAwakingPoint(float awakingPoint) { }
+    public virtual void AttackShishiGawara(int attackPower) { }
 }
