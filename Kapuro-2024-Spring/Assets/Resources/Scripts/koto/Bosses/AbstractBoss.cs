@@ -21,6 +21,7 @@ public abstract class AbstractBoss : MonoBehaviour
     
     /*ここに共通のメンバ関数*/
     public abstract void SetMyself();
+    public abstract void Initialize();
     
     /*KawaraYokai固有*/
     //プロパティ
@@ -29,6 +30,7 @@ public abstract class AbstractBoss : MonoBehaviour
 
     //メンバ関数
     public virtual void AttackKawaraYokai(int attackPower) { }
+    public virtual void GenerateKawaraYokaiDescendant(RoofTileController roofTileController, GameObject roofTile) { }
 
     /*ShishiGawara固有*/
     //プロパティ
@@ -43,4 +45,7 @@ public abstract class AbstractBoss : MonoBehaviour
     //メンバ関数
     public virtual void AddAwakingPoint(float awakingPoint) { }
     public virtual void AttackShishiGawara(int attackPower) { }
+    public virtual void GenerateShishiGawaraWaterRoofTile(RoofTileController roofTileController, GameObject roofTile) { }
+    public virtual void GenerateShishiGawaraWhistle(RoofTileController roofTileController, GameObject roofTile) { }
+    public virtual void GenerateShishiGawaraEventRoofTile(RoofTileController roofTileController, GameObject roofTile) { }
 }

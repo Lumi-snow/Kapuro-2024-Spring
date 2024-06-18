@@ -29,9 +29,9 @@ public class RoofTileController : MonoBehaviour
     }
 
     //瓦を破棄する
-    public void Destroy()
+    public async void Destroy()
     {
-        bool isSetNext = roofTileDestroyer.DestroyEvaluatedRoofTile(GetCurrentRoofTile());
+        bool isSetNext = await roofTileDestroyer.DestroyEvaluatedRoofTile(GetCurrentRoofTile());
 
         if (isSetNext == true)
         {

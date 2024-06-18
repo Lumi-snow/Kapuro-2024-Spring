@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 public class NewBehaviourScript : RoofTile
@@ -15,6 +16,12 @@ public class NewBehaviourScript : RoofTile
     {
         get => scoreCorrectRoofTile;
         set => scoreCorrectRoofTile = value;
+    }
+    
+    /*共通のメンバ関数*/
+    public override async UniTask OnDestroyProcess()
+    {
+        await UniTask.Yield();
     }
     
     /*固有の変数*/

@@ -18,6 +18,9 @@ public class RoofTileEventHandler : MonoBehaviour
                 bossGenerater.GenerateBoss(eventType);
                 BGMSwitcher.CrossFade(BGMPath.BossBGM02, 3);
                 break;
+            case ConstantNumberKoto.ConstantNumberKoto.EVENT_TYPE.SHISHIGAWARA_EVENT:
+                //獅子瓦固有のイベント
+                break;
             default:
                 break;
         }

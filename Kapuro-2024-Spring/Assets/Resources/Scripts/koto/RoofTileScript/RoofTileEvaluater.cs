@@ -58,6 +58,12 @@ public class RoofTileEvaluater : MonoBehaviour
                         bossController.boss.GetComponent<AbstractBoss>().AddAwakingPoint(currentRoofTile.GetComponent<RoofTile>().ShishiGawaraWhistleAttackPower); //ボスの覚醒ポイントを加算
                         currentRoofTile.GetComponent<RoofTile>().evaluateType = RoofTile.EvaluateType.INCORRECT; //評価を不正解にする
                         break;
+                    case RoofTile.RoofTileType.SHISHIGAWARA_EVENT:
+                        SendCorrect();
+                        //ここに音声
+                        currentRoofTile.GetComponent<RoofTile>().ShishiGawaraMessageEvent();
+                        currentRoofTile.GetComponent<RoofTile>().evaluateType = RoofTile.EvaluateType.CORRECT; //評価を正解にする
+                        break;
                 }
             }
 
@@ -102,6 +108,12 @@ public class RoofTileEvaluater : MonoBehaviour
                         bossController.boss.GetComponent<AbstractBoss>().AddAwakingPoint(currentRoofTile.GetComponent<RoofTile>().ShishiGawaraWhistleAttackPower); //ボスの覚醒ポイントを加算
                         currentRoofTile.GetComponent<RoofTile>().evaluateType = RoofTile.EvaluateType.INCORRECT; //評価を不正解にする
                         break;
+                    case RoofTile.RoofTileType.SHISHIGAWARA_EVENT:
+                        SendCorrect();
+                        //ここに音声
+                        currentRoofTile.GetComponent<RoofTile>().ShishiGawaraMessageEvent();
+                        currentRoofTile.GetComponent<RoofTile>().evaluateType = RoofTile.EvaluateType.CORRECT; //評価を正解にする
+                        break;
                 }
             }
 
@@ -113,22 +125,32 @@ public class RoofTileEvaluater : MonoBehaviour
                     case RoofTile.RoofTileType.KAWARA_YOKAI_DESCENDANT:
                         SendCorrect();
                         AudioUtilizer.AudioUtilizer.PlayRandomAttackSE(); //攻撃SEを再生
-                        bossController.boss.GetComponent<AbstractBoss>().AttackKawaraYokai(currentRoofTile.GetComponent<RoofTile>().AttackPower); //ボスに攻撃
+                        bossController.boss.GetComponent<AbstractBoss>()
+                            .AttackKawaraYokai(currentRoofTile.GetComponent<RoofTile>().AttackPower); //ボスに攻撃
                         scoreController.AddScore(currentRoofTile.GetComponent<RoofTile>().Score); //スコアを加算
                         currentRoofTile.GetComponent<RoofTile>().evaluateType = RoofTile.EvaluateType.CORRECT; //評価を正解にする
                         break;
                     case RoofTile.RoofTileType.SHISHIGAWARA_WATER:
                         SendCorrect();
                         AudioUtilizer.AudioUtilizer.PlayRandomShishiGawaraWhistleSE(); //攻撃SEを再生
-                        bossController.boss.GetComponent<AbstractBoss>().AttackShishiGawara(currentRoofTile.GetComponent<RoofTile>().AwakingPointPower); //ボスに攻撃
+                        bossController.boss.GetComponent<AbstractBoss>()
+                            .AttackShishiGawara(currentRoofTile.GetComponent<RoofTile>().AwakingPointPower); //ボスに攻撃
                         scoreController.AddScore(currentRoofTile.GetComponent<RoofTile>().Score); //スコアを加算
                         currentRoofTile.GetComponent<RoofTile>().evaluateType = RoofTile.EvaluateType.CORRECT; //評価を正解にする
                         break;
                     case RoofTile.RoofTileType.SHISHIGAWARA_WHISTLE:
                         SendCorrect();
                         AudioUtilizer.AudioUtilizer.PlayRandomShishiGawaraWhistleSE(); //攻撃SEを再生
-                        bossController.boss.GetComponent<AbstractBoss>().AttackShishiGawara(currentRoofTile.GetComponent<RoofTile>().ShishiGawaraWhistleAttackPower); //ボスに攻撃
+                        bossController.boss.GetComponent<AbstractBoss>()
+                            .AttackShishiGawara(currentRoofTile.GetComponent<RoofTile>()
+                                .ShishiGawaraWhistleAttackPower); //ボスに攻撃
                         scoreController.AddScore(currentRoofTile.GetComponent<RoofTile>().Score); //スコアを加算
+                        currentRoofTile.GetComponent<RoofTile>().evaluateType = RoofTile.EvaluateType.CORRECT; //評価を正解にする
+                        break;
+                    case RoofTile.RoofTileType.SHISHIGAWARA_EVENT:
+                        SendCorrect();
+                        //ここに音声
+                        currentRoofTile.GetComponent<RoofTile>().ShishiGawaraMessageEvent();
                         currentRoofTile.GetComponent<RoofTile>().evaluateType = RoofTile.EvaluateType.CORRECT; //評価を正解にする
                         break;
                 }

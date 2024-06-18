@@ -18,6 +18,8 @@ public class UIControllerKoto : MonoBehaviour
 
     [SerializeField] private List<GameObject> popupListForBoss; //ボス出現時のポップアップのリスト
 
+    [SerializeField] private GameObject eventMessagePrefab; //イベントメッセージのプレハブ
+
     //初期化
     public void Initialize()
     {
@@ -27,6 +29,7 @@ public class UIControllerKoto : MonoBehaviour
         popupParent = addGameObjectController.NewGameObject;
         foreach(GameObject popupPrefab in popupPrefabList)
             prefabController.AddNewPrefab(popupPrefab);
+        prefabController.AddNewPrefab(eventMessagePrefab);
     }
     
     //スコアの表示を更新

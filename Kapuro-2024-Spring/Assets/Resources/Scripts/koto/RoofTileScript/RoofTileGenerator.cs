@@ -38,7 +38,7 @@ public class RoofTileGenerator : MonoBehaviour
     //瓦を生成
     public void GenerateRoofTile()
     {
-        int randomValue = UnityEngine.Random.Range(0, roofTileType.Count - 4); //瓦の種類をランダムに決定
+        int randomValue = UnityEngine.Random.Range(0, roofTileType.Count - 5); //瓦の種類をランダムに決定
         int randomIndex = UnityEngine.Random.Range(3, (roofTileController.roofTiles.Count - 1) / 2); //どのタイミングで出現させるかをランダムに決定
 
         if (bossController.boss == null)
@@ -114,16 +114,12 @@ public class RoofTileGenerator : MonoBehaviour
         switch(bossController.boss.GetComponent<AbstractBoss>().bossType)
         {
             case AbstractBoss.BossType.KAWARA_YOKAI:
-                if (bossController.boss.GetComponent<AbstractBoss>().IsAllDescendantDead != true)
+                if (bossController.boss.GetComponent<AbstractBoss>().IsAllDescendantDead == false)
                 {
+                    //眷属を生成
                     for(int i = 0 ; i < bossController.boss.GetComponent<AbstractBoss>().AllDescendantNum ; i++)
                     {
-                        int randomValue = UnityEngine.Random.Range(3, (roofTileController.roofTiles.Count - 1) / 2); //どのタイミングで出現させるかをランダムに決定
-                        prefabController.InstantiatePrefab("KawaraYokai'sDescendant", Vector3.zero, Quaternion.identity, roofTile); //PrefabからKawaraYokaiDescendantを複製
-                        GameObject kawaraYokaisDescendant = prefabController.clonePrefab;
-                        kawaraYokaisDescendant.GetComponent<RoofTile>().evaluateType = RoofTile.EvaluateType.NOT_EVALUATED; //KawaraYokaiDescendantの評価をNOT_EVALUATEDに設定
-                        roofTileController.roofTiles.Insert(randomValue, kawaraYokaisDescendant); //複製したKawaraYokaiDescendantをリストに追加
-
+                        bossController.boss.GetComponent<AbstractBoss>().GenerateKawaraYokaiDescendant(roofTileController, roofTile);
                         GenerateRoofTile(); //追加の瓦を生成
                     }
                 
@@ -137,28 +133,20 @@ public class RoofTileGenerator : MonoBehaviour
                     //水の音がする瓦を生成
                     for(int i = 0 ; i < bossController.boss.GetComponent<AbstractBoss>().AllShishiGawaraWaterRoofTileNum ; i++)
                     {
-                        int randomValue = UnityEngine.Random.Range(3, (roofTileController.roofTiles.Count - 1) / 2); //どのタイミングで出現させるかをランダムに決定
-                        
-                        prefabController.InstantiatePrefab("ShishiGawaraWaterRoofTile", Vector3.zero, Quaternion.identity, roofTile); //PrefabからshishiGawaraWaterRoofTileを複製
-                        GameObject shishiGawaraWaterRoofTile = prefabController.clonePrefab;
-                        shishiGawaraWaterRoofTile.GetComponent<RoofTile>().evaluateType = RoofTile.EvaluateType.NOT_EVALUATED; //shishiGawaraWaterRoofTileの評価をNOT_EVALUATEDに設定
-                        roofTileController.roofTiles.Insert(randomValue, shishiGawaraWaterRoofTile); //複製したshishiGawaraWaterRoofTileをリストに追加
-                        
+                        bossController.boss.GetComponent<AbstractBoss>().GenerateShishiGawaraWaterRoofTile(roofTileController, roofTile);
                         GenerateRoofTile(); //追加の瓦を生成
                     }
 
                     //笛を生成
                     for (int i = 0; i < bossController.boss.GetComponent<AbstractBoss>().AllShishiGawaraWhistleNum; i++)
                     {
-                        int randomValue = UnityEngine.Random.Range(3, (roofTileController.roofTiles.Count - 1) / 2); //どのタイミングで出現させるかをランダムに決定
-                        
-                        prefabController.InstantiatePrefab("ShishiGawaraWhistle", Vector3.zero, Quaternion.identity, roofTile); //PrefabからshishiGawaraWaterRoofTileを複製
-                        GameObject shishiGawaraWhistle = prefabController.clonePrefab;
-                        shishiGawaraWhistle.GetComponent<RoofTile>().evaluateType = RoofTile.EvaluateType.NOT_EVALUATED; //shishiGawaraWaterRoofTileの評価をNOT_EVALUATEDに設定
-                        roofTileController.roofTiles.Insert(randomValue, shishiGawaraWhistle); //複製したshishiGawaraWaterRoofTileをリストに追加
-                        
+                        bossController.boss.GetComponent<AbstractBoss>().GenerateShishiGawaraWhistle(roofTileController, roofTile);
                         GenerateRoofTile(); //追加の瓦を生成
                     }
+                    
+                    //Todo KidsModeでは生成しない
+                    //イベント用の瓦を生成
+                    bossController.boss.GetComponent<AbstractBoss>().GenerateShishiGawaraEventRoofTile(roofTileController, roofTile);
                     
                     bossController.boss.GetComponent<AbstractBoss>().IsGenerateShishiGawaraWaterRoofTile = true; //IsGenerateShishiGawaraWaterRoofTileをtrueに設定
                 }

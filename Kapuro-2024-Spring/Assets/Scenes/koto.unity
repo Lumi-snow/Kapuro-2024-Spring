@@ -388,6 +388,7 @@ MonoBehaviour:
   - {fileID: 5175058974315574278, guid: e290fcd43fc71cc428cf61fbf5099749, type: 3}
   - {fileID: 6196732176380277435, guid: 8577789ffc7c4f947a78f4191abd4841, type: 3}
   - {fileID: 6196732176380277435, guid: bc49b44188fef1e45888d6bcc57e35e2, type: 3}
+  - {fileID: 6196732176380277435, guid: 37fe55df415878847b668e1134805b24, type: 3}
   roofTileController: {fileID: 330607405}
   bossController: {fileID: 1520961372}
   prefabController: {fileID: 644044494}
@@ -668,6 +669,7 @@ MonoBehaviour:
   - {fileID: 2473972639097616233, guid: 4b06b5116edca3a4b82f78386e2dc2ac, type: 3}
   - {fileID: 3262559874464393185, guid: 4fedc93479e3fef4dacb1404a1037201, type: 3}
   popupListForBoss: []
+  eventMessagePrefab: {fileID: 7324363311927138320, guid: f8c896ee9a6d4744bb48548e9a524cb5, type: 3}
 --- !u!1 &357088584
 GameObject:
   m_ObjectHideFlags: 0

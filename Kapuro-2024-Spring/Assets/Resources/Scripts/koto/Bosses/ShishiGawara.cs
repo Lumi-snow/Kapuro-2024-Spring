@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine.UI;
 using UnityEngine;
 
@@ -6,6 +7,8 @@ public class ShishiGawara : AbstractBoss
     public override BossType bossType => BossType.SHISHIGAWARA; // bossType プロパティをオーバーライド
     
     /*共通のメンバ変数*/
+    [SerializeField] private PrefabController prefabController; //PrefabController
+    [SerializeField] private PrefabList prefabList; //PrefabList
     [SerializeField] private Slider ShishiGawaraHpSlider;
     [SerializeField] private const int hpMax = 1000; // 最大HP
     [SerializeField] private int shishiGawaraHp = 1000; //HP
@@ -39,9 +42,15 @@ public class ShishiGawara : AbstractBoss
     public override void SetMyself()
     {
         transform.localPosition = new Vector3(0, 300, 0);
-        transform.localScale = new Vector3(50, 50, 0);
+        transform.localScale = new Vector3(50, 50, 1);
         HpSlider = HpMax;
         AwakingPointSlider.value = 0;
+    }
+
+    public override void Initialize()
+    {
+        prefabController = this.AddComponent<PrefabController>();
+        prefabController.prefabList = prefabList;
     }
     
     /*固有のメンバ変数*/
@@ -49,7 +58,7 @@ public class ShishiGawara : AbstractBoss
     [SerializeField] private int shishiGawaraMaxAwakingPoint = 300; //最大覚醒ポイント
     [SerializeField] private float shishiGawaraAwakingPoint = 0; //覚醒ポイント
     [SerializeField] private int allShishiGawaraWaterRoofTileNum = 30; //水の音が鳴る瓦の総数
-    [SerializeField] private int allshishiGawaraWhistleNum = 100; //水の音が鳴る瓦の数
+    [SerializeField] private int allshishiGawaraWhistleNum = 100; //笛の音が鳴る瓦の数
     [SerializeField] private bool isShishiGawaraAwaking = false; //覚醒しているかどうか
     [SerializeField] private bool isGenerateShishiGawaraWaterRoofTile = false; //特殊瓦を生成するかどうか
     
@@ -73,5 +82,36 @@ public class ShishiGawara : AbstractBoss
     {
         Hp -= attackPower;
         HpSlider -= attackPower;
+    }
+
+    public override void GenerateShishiGawaraWaterRoofTile(RoofTileController roofTileController, GameObject roofTile)
+    {
+        int randomValue01 = UnityEngine.Random.Range(3, (roofTileController.roofTiles.Count - 1) / 2); //どのタイミングで出現させるかをランダムに決定
+                        
+        prefabController.InstantiatePrefab("ShishiGawaraWaterRoofTile", Vector3.zero, Quaternion.identity, roofTile); //PrefabからshishiGawaraWaterRoofTileを複製
+        GameObject shishiGawaraWaterRoofTile = prefabController.clonePrefab;
+        shishiGawaraWaterRoofTile.GetComponent<RoofTile>().evaluateType = RoofTile.EvaluateType.NOT_EVALUATED; //shishiGawaraWaterRoofTileの評価をNOT_EVALUATEDに設定
+        roofTileController.roofTiles.Insert(randomValue01, shishiGawaraWaterRoofTile); //複製したshishiGawaraWaterRoofTileをリストに追加
+    }
+    
+    public override void GenerateShishiGawaraWhistle(RoofTileController roofTileController, GameObject roofTile)
+    {
+        int randomValue01 = UnityEngine.Random.Range(3, (roofTileController.roofTiles.Count - 1) / 2); //どのタイミングで出現させるかをランダムに決定
+                        
+        prefabController.InstantiatePrefab("ShishiGawaraWhistle", Vector3.zero, Quaternion.identity, roofTile); //PrefabからshishiGawaraWaterRoofTileを複製
+        GameObject shishiGawaraWhistle = prefabController.clonePrefab;
+        shishiGawaraWhistle.GetComponent<RoofTile>().evaluateType = RoofTile.EvaluateType.NOT_EVALUATED; //shishiGawaraWaterRoofTileの評価をNOT_EVALUATEDに設定
+        roofTileController.roofTiles.Insert(randomValue01, shishiGawaraWhistle); //複製したshishiGawaraWaterRoofTileをリストに追加
+    }
+    
+    public override void GenerateShishiGawaraEventRoofTile(RoofTileController roofTileController, GameObject roofTile) //特殊イベントを発生させる瓦を生成
+    {
+        int randomValue02 = UnityEngine.Random.Range(3, (roofTileController.roofTiles.Count - 1) / 2);
+                    
+        prefabController.InstantiatePrefab("ShishiGawaraEventRoofTile", Vector3.zero, Quaternion.identity, roofTile); //PrefabからshishiGawaraWaterRoofTileを複製
+        GameObject shishiGawaraEventRoofTile = prefabController.clonePrefab;
+        shishiGawaraEventRoofTile.GetComponent<RoofTile>().evaluateType = RoofTile.EvaluateType.NOT_EVALUATED; //shishiGawaraWaterRoofTileの評価をNOT_EVALUATEDに設定
+        shishiGawaraEventRoofTile.GetComponent<RoofTile>().InitializeShishiGawaraMessageEvent(); //イベント用の瓦を初期化
+        roofTileController.roofTiles.Insert(randomValue02, shishiGawaraEventRoofTile); //複製したshishiGawaraWaterRoofTileをリストに追加
     }
 }

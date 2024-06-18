@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 //‰ó‚ê‚½Š¢
@@ -16,6 +17,12 @@ public class BrokenRoofTile : RoofTile
     {
         get => scoreBrokenRoofTile;
         set => scoreBrokenRoofTile = value;
+    }
+    
+    /*‹¤’Ê‚Ìƒƒ“ƒoŠÖ”*/
+    public override async UniTask OnDestroyProcess()
+    {
+        await UniTask.Yield();
     }
     
     /*ŒÅ—L‚Ìƒƒ“ƒo•Ï”*/

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 public class ShishiGawaraWaterWhistle : RoofTile
@@ -18,6 +19,10 @@ public class ShishiGawaraWaterWhistle : RoofTile
     }
     
     /*共通のメンバ関数*/
+    public override async UniTask OnDestroyProcess()
+    {
+        await UniTask.Yield();
+    }
     
     /*固有のメンバ変数*/
     [SerializeField] private int shishiGawaraWhistleAttackPower = 15; //笛の攻撃力

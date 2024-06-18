@@ -15,7 +15,7 @@ public class PrefabList : ScriptableObject
 public class PrefabController : MonoBehaviour
 {
     //ƒvƒŒƒnƒu‚ÌScriptableObject
-    [SerializeField] PrefabList prefabList;
+    [SerializeField] public PrefabList prefabList;
 
     public GameObject clonePrefab;
     

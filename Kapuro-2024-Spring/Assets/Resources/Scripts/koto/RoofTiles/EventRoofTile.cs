@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using ConstantNumberKoto;
+using Cysharp.Threading.Tasks;
 
 public class EventRoofTile : RoofTile
 {
@@ -22,6 +23,12 @@ public class EventRoofTile : RoofTile
     {
         get => scoreBrokenRoofTile;
         set => scoreBrokenRoofTile = value;
+    }
+    
+    /*共通のメンバ関数*/
+    public override async UniTask OnDestroyProcess()
+    {
+        await UniTask.Yield();
     }
     
     /*固有のメンバ変数*/

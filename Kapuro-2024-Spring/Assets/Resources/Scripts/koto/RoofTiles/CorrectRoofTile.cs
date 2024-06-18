@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 //•’Ê‚ÌŠ¢
@@ -16,5 +17,11 @@ public class CorrectRoofTile : RoofTile
     {
         get => scoreCorrectRoofTile;
         set => scoreCorrectRoofTile = value;
+    }
+    
+    /*‹¤’Ê‚Ìƒƒ“ƒoŠÖ”*/
+    public override async UniTask OnDestroyProcess()
+    {
+        await UniTask.Yield();
     }
 }

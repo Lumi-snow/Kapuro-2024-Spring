@@ -37,6 +37,7 @@ public class BossGenerater : MonoBehaviour
                 SEController.Instance.Play(SEPath.BossExpression01);
                 prefabController.InstantiatePrefab("KawaraYokai", Vector3.zero, Quaternion.identity, ParentObject);
                 bossController.boss = prefabController.clonePrefab;
+                bossController.boss.GetComponent<AbstractBoss>().Initialize();
                 uiControllerKoto.OnExpressBossExpressionText(bossController.boss.name);
                 uiControllerKoto.PressSpaceText();
                 break;
@@ -44,6 +45,7 @@ public class BossGenerater : MonoBehaviour
                 SEController.Instance.Play(SEPath.BossExpression01);
                 prefabController.InstantiatePrefab("ShishiGawara", Vector3.zero, Quaternion.identity, ParentObject);
                 bossController.boss = prefabController.clonePrefab;
+                bossController.boss.GetComponent<AbstractBoss>().Initialize();
                 uiControllerKoto.OnExpressBossExpressionText(bossController.boss.name);
                 uiControllerKoto.PressSpaceText();
                 break;

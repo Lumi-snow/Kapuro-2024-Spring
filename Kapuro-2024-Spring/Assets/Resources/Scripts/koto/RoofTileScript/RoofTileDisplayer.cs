@@ -12,14 +12,14 @@ public class RoofTileDisplayer : MonoBehaviour
         if (roofTileController.roofTiles.Count >= 2)
         {
             roofTileController.roofTiles[0].transform.localPosition = new Vector3(0, -400, 0);
-            roofTileController.roofTiles[0].transform.localScale = new Vector3(50, 50, 0);
+            roofTileController.roofTiles[0].transform.localScale = new Vector3(50, 50, 1);
             roofTileController.roofTiles[1].transform.localPosition = new Vector3(0, 0, 0);
-            roofTileController.roofTiles[1].transform.localScale = new Vector3(50, 50, 0);
+            roofTileController.roofTiles[1].transform.localScale = new Vector3(50, 50, 1);
         }
         else if(roofTileController.roofTiles.Count != 0) //最後の瓦の場合
         {
             roofTileController.roofTiles[0].transform.localPosition = new Vector3(0, -400, 0);
-            roofTileController.roofTiles[0].transform.localScale = new Vector3(50, 50, 0);
+            roofTileController.roofTiles[0].transform.localScale = new Vector3(50, 50, 1);
         }
     }
     
