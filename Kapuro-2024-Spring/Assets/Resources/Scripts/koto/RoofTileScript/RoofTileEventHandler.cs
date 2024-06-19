@@ -21,14 +21,19 @@ public class RoofTileEventHandler : MonoBehaviour
             case ConstantNumberKoto.ConstantNumberKoto.EVENT_TYPE.SHISHIGAWARA_EVENT:
                 //獅子瓦固有のイベント
                 break;
-            default:
+            case ConstantNumberKoto.ConstantNumberKoto.EVENT_TYPE.KAWARA_BOUZU:
+                bossGenerater.GenerateBoss(eventType);
+                BGMSwitcher.CrossFade(BGMPath.BossBGM02, 3);
+                break;
+            case ConstantNumberKoto.ConstantNumberKoto.EVENT_TYPE.KAWARA_BOUZU_EVENT:
+                //瓦坊主固有のイベント
                 break;
         }
     }
     
     public void SetEvent() //イベントの種類を決定する
     {
-        int randomValue = UnityEngine.Random.Range(0, 2);
+        int randomValue = UnityEngine.Random.Range(2, 3);
         Debug.Log(randomValue);
         
         switch (randomValue)
@@ -38,6 +43,9 @@ public class RoofTileEventHandler : MonoBehaviour
                 break;
             case 1:
                 eventType = ConstantNumberKoto.ConstantNumberKoto.EVENT_TYPE.SHISHIGAWARA;
+                break;
+            case 2:
+                eventType = ConstantNumberKoto.ConstantNumberKoto.EVENT_TYPE.KAWARA_BOUZU;
                 break;
         }
     }

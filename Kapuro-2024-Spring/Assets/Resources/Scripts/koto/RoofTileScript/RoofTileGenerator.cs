@@ -38,7 +38,7 @@ public class RoofTileGenerator : MonoBehaviour
     //瓦を生成
     public void GenerateRoofTile()
     {
-        int randomValue = UnityEngine.Random.Range(0, roofTileType.Count - 5); //瓦の種類をランダムに決定
+        int randomValue = UnityEngine.Random.Range(0, roofTileType.Count - 9); //瓦の種類をランダムに決定
         int randomIndex = UnityEngine.Random.Range(3, (roofTileController.roofTiles.Count - 1) / 2); //どのタイミングで出現させるかをランダムに決定
 
         if (bossController.boss == null)
@@ -113,7 +113,7 @@ public class RoofTileGenerator : MonoBehaviour
     {
         switch(bossController.boss.GetComponent<AbstractBoss>().bossType)
         {
-            case AbstractBoss.BossType.KAWARA_YOKAI:
+            case AbstractBoss.BossType.KAWARA_YOKAI: //瓦妖怪の場合
                 if (bossController.boss.GetComponent<AbstractBoss>().IsAllDescendantDead == false)
                 {
                     //眷属を生成
@@ -127,7 +127,7 @@ public class RoofTileGenerator : MonoBehaviour
                 }
                 
                 break;
-            case AbstractBoss.BossType.SHISHIGAWARA:
+            case AbstractBoss.BossType.SHISHIGAWARA: //獅子瓦の場合
                 if (bossController.boss.GetComponent<AbstractBoss>().IsGenerateShishiGawaraWaterRoofTile == false)
                 {
                     //水の音がする瓦を生成
@@ -151,6 +151,35 @@ public class RoofTileGenerator : MonoBehaviour
                     bossController.boss.GetComponent<AbstractBoss>().IsGenerateShishiGawaraWaterRoofTile = true; //IsGenerateShishiGawaraWaterRoofTileをtrueに設定
                 }
                 
+                break;
+            case AbstractBoss.BossType.KAWARA_BOUZU: //瓦坊主の場合
+                if (bossController.boss.GetComponent<AbstractBoss>().IsGenerateKawaraBouzuRoofTile == false)
+                {
+                    for (int i = 0; i < bossController.boss.GetComponent<AbstractBoss>().AllAburaNum; i++)
+                    {
+                        bossController.boss.GetComponent<AbstractBoss>().GenerateKawaraBouzuAburaRoofTile(roofTileController, roofTile);
+                        GenerateRoofTile();
+                    }
+
+                    for (int i = 0; i < bossController.boss.GetComponent<AbstractBoss>().AllMameNum; i++)
+                    {
+                        bossController.boss.GetComponent<AbstractBoss>().GenerateKawaraBouzuMameRoofTile(roofTileController, roofTile);
+                        GenerateRoofTile();
+                    }
+
+                    for (int i = 0; i < bossController.boss.GetComponent<AbstractBoss>().AllKyouNum; i++)
+                    {
+                        bossController.boss.GetComponent<AbstractBoss>().GenerateKawaraBouzuKyouRoofTile(roofTileController, roofTile);
+                        GenerateRoofTile();
+                    }
+                    
+                    //Todo KidsModeでは生成しない
+                    //イベント用の瓦を生成
+                    bossController.boss.GetComponent<AbstractBoss>().GenerateKawaraBouzuEventRoofTile(roofTileController, roofTile);
+                    
+                    bossController.boss.GetComponent<AbstractBoss>().IsGenerateKawaraBouzuRoofTile = true; //IsGenerateKawaraBouzuRoofTileをtrueに設定
+                }
+
                 break;
             default:
                 Debug.Log("Error occured in GenerateSpecialRoofTileForBoss(), RoofTileGenerator");

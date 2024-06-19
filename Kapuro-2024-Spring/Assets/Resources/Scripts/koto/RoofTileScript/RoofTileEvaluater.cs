@@ -20,6 +20,7 @@ public class RoofTileEvaluater : MonoBehaviour
                 SEController.Instance.Play(SEPath.PutAndThrowRoofTile);
                 switch (currentRoofTile.GetComponent<RoofTile>().roofTileType)
                 {
+                    /*Normal*/
                     case RoofTile.RoofTileType.NORMAL: //瓦が普通の場合
                         SendCorrect();
                         scoreController.AddScore(currentRoofTile.GetComponent<RoofTile>().Score); //スコアを加算
@@ -46,6 +47,7 @@ public class RoofTileEvaluater : MonoBehaviour
                         roofTileEventHandler.SetEvent(); //イベントを発生させる
                         roofTileEventHandler.EventHandler(); //イベントの生成
                         break;
+                    /*ShishiGawara*/
                     case RoofTile.RoofTileType.SHISHIGAWARA_WATER: //瓦が獅子瓦の水の場合
                         SendIncorrect();
                         AudioUtilizer.AudioUtilizer.PlayShishiGawaraWaterSE(); //水の音を再生
@@ -64,6 +66,25 @@ public class RoofTileEvaluater : MonoBehaviour
                         currentRoofTile.GetComponent<RoofTile>().ShishiGawaraMessageEvent();
                         currentRoofTile.GetComponent<RoofTile>().evaluateType = RoofTile.EvaluateType.CORRECT; //評価を正解にする
                         break;
+                    /*KawaraBouzu*/
+                    case RoofTile.RoofTileType.KAWARA_BOUZU_ABURA:
+                        SendIncorrect();
+                        currentRoofTile.GetComponent<RoofTile>().evaluateType = RoofTile.EvaluateType.INCORRECT; //評価を不正解にする
+                        break;
+                    case RoofTile.RoofTileType.KAWARA_BOUZU_MAME:
+                        SendIncorrect();
+                        currentRoofTile.GetComponent<RoofTile>().evaluateType = RoofTile.EvaluateType.INCORRECT; //評価を不正解にする
+                        break;
+                    case RoofTile.RoofTileType.KAWARA_BOUZU_KYOU:
+                        SendCorrect();
+                        bossController.boss.GetComponent<AbstractBoss>().AttackKawaraBouzu(currentRoofTile.GetComponent<RoofTile>().KawaraBouzuKyouRoofTileAttackPower); //ボスに攻撃
+                        currentRoofTile.GetComponent<RoofTile>().evaluateType = RoofTile.EvaluateType.CORRECT; //評価を正解にする
+                        break;
+                    case RoofTile.RoofTileType.KAWARA_BOUZU_EVENT:
+                        SendCorrect();
+                        currentRoofTile.GetComponent<RoofTile>().KawaraBouzuMessageEvent();
+                        currentRoofTile.GetComponent<RoofTile>().evaluateType = RoofTile.EvaluateType.CORRECT; //評価を正解にする
+                        break;
                 }
             }
 
@@ -73,6 +94,7 @@ public class RoofTileEvaluater : MonoBehaviour
                 SEController.Instance.Play(SEPath.PutAndThrowRoofTile);
                 switch (currentRoofTile.GetComponent<RoofTile>().roofTileType)
                 {
+                    /*Normal*/
                     case RoofTile.RoofTileType.NORMAL: //瓦が普通の場合
                         SendIncorrect();
                         currentRoofTile.GetComponent<RoofTile>().evaluateType = RoofTile.EvaluateType.INCORRECT; //評価を不正解にする
@@ -96,6 +118,7 @@ public class RoofTileEvaluater : MonoBehaviour
                         roofTileEventHandler.SetEvent(); //イベントを発生させる
                         roofTileEventHandler.EventHandler(); //イベントの生成
                         break;
+                    /*ShishiGawara*/
                     case RoofTile.RoofTileType.SHISHIGAWARA_WATER:
                         SendIncorrect();
                         AudioUtilizer.AudioUtilizer.PlayShishiGawaraWaterSE(); //水の音を再生
@@ -114,6 +137,26 @@ public class RoofTileEvaluater : MonoBehaviour
                         currentRoofTile.GetComponent<RoofTile>().ShishiGawaraMessageEvent();
                         currentRoofTile.GetComponent<RoofTile>().evaluateType = RoofTile.EvaluateType.CORRECT; //評価を正解にする
                         break;
+                    /*KawaraBouzu*/
+                    case RoofTile.RoofTileType.KAWARA_BOUZU_ABURA:
+                        SendIncorrect();
+                        currentRoofTile.GetComponent<RoofTile>().evaluateType = RoofTile.EvaluateType.INCORRECT; //評価を不正解にする
+                        break;
+                    case RoofTile.RoofTileType.KAWARA_BOUZU_MAME:
+                        SendIncorrect();
+                        currentRoofTile.GetComponent<RoofTile>().evaluateType = RoofTile.EvaluateType.CORRECT; //評価を不正解にする
+                        break;
+                    case RoofTile.RoofTileType.KAWARA_BOUZU_KYOU:
+                        SendCorrect();
+                        bossController.boss.GetComponent<AbstractBoss>().AttackBouzu(currentRoofTile.GetComponent<RoofTile>().KawaraBouzuKyouRoofTileAttackPower); //坊主に攻撃
+                        scoreController.AddScore(currentRoofTile.GetComponent<RoofTile>().Score); //スコアを加算
+                        currentRoofTile.GetComponent<RoofTile>().evaluateType = RoofTile.EvaluateType.CORRECT; //評価を正解にする
+                        break;
+                    case RoofTile.RoofTileType.KAWARA_BOUZU_EVENT:
+                        SendCorrect();
+                        currentRoofTile.GetComponent<RoofTile>().KawaraBouzuMessageEvent();
+                        currentRoofTile.GetComponent<RoofTile>().evaluateType = RoofTile.EvaluateType.CORRECT; //評価を正解にする
+                        break;
                 }
             }
 
@@ -122,6 +165,7 @@ public class RoofTileEvaluater : MonoBehaviour
             {
                 switch (currentRoofTile.GetComponent<RoofTile>().roofTileType)
                 {
+                    /*KawaraYokai*/
                     case RoofTile.RoofTileType.KAWARA_YOKAI_DESCENDANT:
                         SendCorrect();
                         AudioUtilizer.AudioUtilizer.PlayRandomAttackSE(); //攻撃SEを再生
@@ -130,20 +174,18 @@ public class RoofTileEvaluater : MonoBehaviour
                         scoreController.AddScore(currentRoofTile.GetComponent<RoofTile>().Score); //スコアを加算
                         currentRoofTile.GetComponent<RoofTile>().evaluateType = RoofTile.EvaluateType.CORRECT; //評価を正解にする
                         break;
+                    /*ShishiGawara*/
                     case RoofTile.RoofTileType.SHISHIGAWARA_WATER:
                         SendCorrect();
                         AudioUtilizer.AudioUtilizer.PlayRandomShishiGawaraWhistleSE(); //攻撃SEを再生
-                        bossController.boss.GetComponent<AbstractBoss>()
-                            .AttackShishiGawara(currentRoofTile.GetComponent<RoofTile>().AwakingPointPower); //ボスに攻撃
+                        bossController.boss.GetComponent<AbstractBoss>().AttackShishiGawara(currentRoofTile.GetComponent<RoofTile>().AwakingPointPower); //ボスに攻撃
                         scoreController.AddScore(currentRoofTile.GetComponent<RoofTile>().Score); //スコアを加算
                         currentRoofTile.GetComponent<RoofTile>().evaluateType = RoofTile.EvaluateType.CORRECT; //評価を正解にする
                         break;
                     case RoofTile.RoofTileType.SHISHIGAWARA_WHISTLE:
                         SendCorrect();
                         AudioUtilizer.AudioUtilizer.PlayRandomShishiGawaraWhistleSE(); //攻撃SEを再生
-                        bossController.boss.GetComponent<AbstractBoss>()
-                            .AttackShishiGawara(currentRoofTile.GetComponent<RoofTile>()
-                                .ShishiGawaraWhistleAttackPower); //ボスに攻撃
+                        bossController.boss.GetComponent<AbstractBoss>().AttackShishiGawara(currentRoofTile.GetComponent<RoofTile>().ShishiGawaraWhistleAttackPower); //ボスに攻撃
                         scoreController.AddScore(currentRoofTile.GetComponent<RoofTile>().Score); //スコアを加算
                         currentRoofTile.GetComponent<RoofTile>().evaluateType = RoofTile.EvaluateType.CORRECT; //評価を正解にする
                         break;
@@ -151,6 +193,29 @@ public class RoofTileEvaluater : MonoBehaviour
                         SendCorrect();
                         //ここに音声
                         currentRoofTile.GetComponent<RoofTile>().ShishiGawaraMessageEvent();
+                        currentRoofTile.GetComponent<RoofTile>().evaluateType = RoofTile.EvaluateType.CORRECT; //評価を正解にする
+                        break;
+                    /*KawaraBouzu*/
+                    case RoofTile.RoofTileType.KAWARA_BOUZU_ABURA:
+                        SendCorrect();
+                        bossController.boss.GetComponent<AbstractBoss>().AttackKawaraBouzu(currentRoofTile.GetComponent<RoofTile>().KawaraBouzuAburaRoofTileAttackPower); //ボスに攻撃
+                        scoreController.AddScore(currentRoofTile.GetComponent<RoofTile>().Score); //スコアを加算
+                        currentRoofTile.GetComponent<RoofTile>().evaluateType = RoofTile.EvaluateType.CORRECT; //評価を正解にする
+                        break;
+                    case RoofTile.RoofTileType.KAWARA_BOUZU_MAME:
+                        SendCorrect();
+                        bossController.boss.GetComponent<AbstractBoss>().AttackKawaraBouzu(currentRoofTile.GetComponent<RoofTile>().KawaraBouzuMameRoofTileAttackPower); //ボスに攻撃
+                        scoreController.AddScore(currentRoofTile.GetComponent<RoofTile>().Score); //スコアを加算
+                        currentRoofTile.GetComponent<RoofTile>().evaluateType = RoofTile.EvaluateType.CORRECT; //評価を正解にする
+                        break;
+                    case RoofTile.RoofTileType.KAWARA_BOUZU_KYOU:
+                        SendCorrect();
+                        bossController.boss.GetComponent<AbstractBoss>().AttackKawaraBouzu(-currentRoofTile.GetComponent<RoofTile>().KawaraBouzuKyouRoofTileAttackPower); //ボスが回復
+                        currentRoofTile.GetComponent<RoofTile>().evaluateType = RoofTile.EvaluateType.CORRECT; //評価を不正解にする
+                        break;
+                    case RoofTile.RoofTileType.KAWARA_BOUZU_EVENT:
+                        SendCorrect();
+                        currentRoofTile.GetComponent<RoofTile>().KawaraBouzuMessageEvent();
                         currentRoofTile.GetComponent<RoofTile>().evaluateType = RoofTile.EvaluateType.CORRECT; //評価を正解にする
                         break;
                 }

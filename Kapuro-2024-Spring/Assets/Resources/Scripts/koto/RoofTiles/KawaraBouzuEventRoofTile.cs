@@ -1,20 +1,18 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using AudioController;
 using Cysharp.Threading.Tasks;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ShishiGawaraEventRoofTile : RoofTile
+public class KawaraBouzuEventRoofTile : RoofTile
 {
-    public override RoofTileType roofTileType => RoofTileType.SHISHIGAWARA_EVENT; // roofTileType プロパティをオーバーライド
+    public override RoofTileType roofTileType => RoofTileType.KAWARA_BOUZU_EVENT; // roofTileType プロパティをオーバーライド
     public override EvaluateType evaluateType { get; set; } // evaluateType プロパティをオーバーライド
 
     /*共通のメンバ変数*/
-    [SerializeField] private int scoreCorrectRoofTile = 100; //スコア
+    [SerializeField] private int scoreCorrectRoofTile = 1000; //スコア
     
     /*共通のプロパティ*/
     public override int Score //スコアのプロパティ
@@ -22,7 +20,7 @@ public class ShishiGawaraEventRoofTile : RoofTile
         get => scoreCorrectRoofTile;
         set => scoreCorrectRoofTile = value;
     }
-    
+
     /*共通のメンバ関数*/
     public override async UniTask OnDestroyProcess()
     {
@@ -32,7 +30,7 @@ public class ShishiGawaraEventRoofTile : RoofTile
             gameObject.GetComponent<Transform>().transform.localPosition = new Vector3(0, 0, 0);
             try
             {
-                await UniTask.WaitUntil(() => IsFinishEventShishiGawara == true, cancellationToken: this.GetCancellationTokenOnDestroy());
+                await UniTask.WaitUntil(() => IsFinishEventKawaraBouzu == true, cancellationToken: this.GetCancellationTokenOnDestroy());
             }
             catch (OperationCanceledException exception)
             {
@@ -52,16 +50,16 @@ public class ShishiGawaraEventRoofTile : RoofTile
     [SerializeField] private Button falseButton; //キャンセルボタン
     [SerializeField] private bool isFinishEvent = false; //イベントが終了したかどうか
     [SerializeField] private bool isCorrectAnswer = false;
+    [SerializeField] private bool isNextMessage = false;
     
     /*固有のプロパティ*/
-    public override bool IsFinishEventShishiGawara //イベントが終了したかどうかのプロパティ
-    {
-        get => isFinishEvent;
-    }
+    public override bool IsFinishEventKawaraBouzu { get => isFinishEvent; } //イベントが終了したかどうかのプロパティ
+    public override bool IsNextMessageKawaraBouzu { get => isNextMessage; set => isNextMessage = value; } //次のメッセージに進むかどうかのプロパティ
     
     /*固有のメンバ関数*/
-    public override void InitializeShishiGawaraMessageEvent()
+    public override void InitializeKawaraBouzuEvent()
     {
+        Debug.Log("koko");
         Transform panelTransform = gameObject.transform.Find("EventPanel");
         panel = GameObject.Find("EventPanel");
         Transform trueButtonTransform = panelTransform.Find("TrueButton");
@@ -70,40 +68,45 @@ public class ShishiGawaraEventRoofTile : RoofTile
         falseButton = falseButtonTransform.GetComponent<Button>();
         Transform messageTextTransform = panelTransform.Find("EventMessage");
         messageText = messageTextTransform.GetComponent<TextMeshProUGUI>();
-        messageText.text = "獅子瓦は水の音を聞くと、\n箱から飛び出してしまう。\n笛を吹く？";
+        messageText.text = "坊主が二人経を唱えている";
         panel.gameObject.SetActive(false);
-        boss = GameObject.Find("ShishiGawara(Clone)");
+        boss = GameObject.Find("KawaraBouzu(Clone)");
     }
     
-    public override void ShishiGawaraMessageEvent()
+    public override async UniTask KawaraBouzuMessageEvent()
     {
         panel.gameObject.SetActive(true);
+        messageText.text = "お経に混じって\nカラスの鳴き声が聞こえる\n(スペースキー押下で次のメッセージに進む)";
+        await UniTask.WaitUntil(() => Input.GetKeyDown(KeyCode.DownArrow), cancellationToken: this.GetCancellationTokenOnDestroy());
+        messageText.text = "二人坊主という奴だろう\n油と豆をやると笑うという\n(スペースキー押下で次のメッセージに進む)";
+        await UniTask.WaitUntil(() => Input.GetKeyDown(KeyCode.DownArrow), cancellationToken: this.GetCancellationTokenOnDestroy());
+        messageText.text = "カラスの鳴き声がする坊主に\n油と豆をやる？\n(ボタンを選択してください)";
+        await UniTask.WaitUntil(() => Input.GetKeyDown(KeyCode.DownArrow), cancellationToken: this.GetCancellationTokenOnDestroy());
         trueButton.onClick.AddListener(() => OnClickTrueButton().Forget());
         falseButton.onClick.AddListener(() => OnClickFalseButton().Forget());
     }
-    
+
     private async UniTask OnClickTrueButton()
     {
-        messageText.text = "笛を吹いた。\n";
+        messageText.text = "油と豆をやった\n";
         await UniTask.Delay(1000, cancellationToken: this.GetCancellationTokenOnDestroy());
-        messageText.text =　"箱の揺れが収まる。\n";
+        messageText.text =　"坊主が薄気味悪く、\nにたーっと笑う";
         await UniTask.Delay(1000, cancellationToken: this.GetCancellationTokenOnDestroy());
-        messageText.text =　"獅子瓦のHpと覚醒度が減少。\n";
-        boss.GetComponent<AbstractBoss>().AttackShishiGawara(200);
-        boss.GetComponent<AbstractBoss>().AddAwakingPoint(100);
+        messageText.text =　"瓦坊主のHpが減少\n";
+        boss.GetComponent<AbstractBoss>().AttackKawaraBouzu(200);
         await UniTask.Delay(3000, cancellationToken: this.GetCancellationTokenOnDestroy());
         isFinishEvent = true;
         isCorrectAnswer = true;
     }
-
+    
     private async UniTask OnClickFalseButton()
     {
-        messageText.text = "笛を吹かなかった。\n";
+        messageText.text = "試しにお経をやってみた\n";
         await UniTask.Delay(1000, cancellationToken: this.GetCancellationTokenOnDestroy());
-        messageText.text = "箱の中で獅子が蠢く。\n";
+        messageText.text = "もう一人の坊主が怪訝な顔でこちらを見る\n";
         await UniTask.Delay(1000, cancellationToken: this.GetCancellationTokenOnDestroy());
-        messageText.text = "獅子瓦の覚醒度が増加\n";
-        boss.GetComponent<AbstractBoss>().AddAwakingPoint(-100);
+        messageText.text = "坊主のHpが減少\n";
+        boss.GetComponent<AbstractBoss>().AttackBouzu(200);
         await UniTask.Delay(3000, cancellationToken: this.GetCancellationTokenOnDestroy());
         isFinishEvent = true;
         isCorrectAnswer = false;

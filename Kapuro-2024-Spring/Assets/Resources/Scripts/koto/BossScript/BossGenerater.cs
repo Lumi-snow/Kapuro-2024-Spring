@@ -49,6 +49,14 @@ public class BossGenerater : MonoBehaviour
                 uiControllerKoto.OnExpressBossExpressionText(bossController.boss.name);
                 uiControllerKoto.PressSpaceText();
                 break;
+            case ConstantNumberKoto.ConstantNumberKoto.EVENT_TYPE.KAWARA_BOUZU:
+                SEController.Instance.Play(SEPath.BossExpression01);
+                prefabController.InstantiatePrefab("KawaraBouzu", Vector3.zero, Quaternion.identity, ParentObject);
+                bossController.boss = prefabController.clonePrefab;
+                bossController.boss.GetComponent<AbstractBoss>().Initialize();
+                uiControllerKoto.OnExpressBossExpressionText(bossController.boss.name);
+                uiControllerKoto.PressSpaceText();
+                break;
         }
     }
 }

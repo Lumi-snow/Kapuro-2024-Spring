@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7624323083887782288}
-  - component: {fileID: 3938134177719117758}
   - component: {fileID: 306660218818861567}
   m_Layer: 0
   m_Name: ExpensiveRoofTile
@@ -34,18 +33,6 @@ Transform:
   - {fileID: 752184599862271647}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3938134177719117758
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3963400191648828892}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d9374121311bd64db9faad076a0f327, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &306660218818861567
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe246b1814c8f6c4eb80a65d6ffa4627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreCorrectRoofTile: 500
 --- !u!1 &4205139996797394294
 GameObject:
   m_ObjectHideFlags: 0

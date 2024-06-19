@@ -10,7 +10,9 @@ namespace ConstantNumberKoto
         {
             KAWARAYOKAI,
             SHISHIGAWARA,
-            SHISHIGAWARA_EVENT
+            SHISHIGAWARA_EVENT,
+            KAWARA_BOUZU,
+            KAWARA_BOUZU_EVENT,
         }
         public static EVENT_TYPE eventType;
         public static int EVENT_TYPE_COUNT = 2;

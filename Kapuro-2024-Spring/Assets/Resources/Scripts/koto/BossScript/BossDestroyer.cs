@@ -14,8 +14,9 @@ public class BossDestroyer : MonoBehaviour
         {
             switch (boss.GetComponent<AbstractBoss>().bossType)
             {
+                /*KawaraYokai*/
                 case AbstractBoss.BossType.KAWARA_YOKAI:
-                    if (boss.GetComponent<AbstractBoss>().Hp < 0)
+                    if (boss.GetComponent<AbstractBoss>().Hp <= 0)
                     {
                         //ここに破棄時の処理を書く
                         SEController.Instance.Play(SEPath.DestroyBoss);
@@ -25,8 +26,9 @@ public class BossDestroyer : MonoBehaviour
                     }
                 
                     break;
+                /*ShishiGawara*/
                 case AbstractBoss.BossType.SHISHIGAWARA:
-                    if (boss.GetComponent<AbstractBoss>().Hp < 0)
+                    if (boss.GetComponent<AbstractBoss>().Hp <= 0)
                     {
                         //ここに破棄時の処理を書く
                         SEController.Instance.Play(SEPath.DestroyBoss);
@@ -37,6 +39,24 @@ public class BossDestroyer : MonoBehaviour
                     else if (boss.GetComponent<AbstractBoss>().AwakingPoint >= boss.GetComponent<AbstractBoss>().MaxAwakingPoint) //覚醒ポイントが最大値に達した場合
                     {
                         //ここに破棄時の処理を書く
+                        SEController.Instance.Play(SEPath.ShishiGawaraFailure);
+                        uiControllerKoto.DeflaggerForBossDestroy();
+                        Destroy(bossController.boss);
+                        bossController.IsBossDead = true;
+                    }
+
+                    break;
+                /*KawaraBouzu*/
+                case AbstractBoss.BossType.KAWARA_BOUZU:
+                    if (boss.GetComponent<AbstractBoss>().Hp <= 0)
+                    {
+                        SEController.Instance.Play(SEPath.DestroyBoss);
+                        uiControllerKoto.DeflaggerForBossDestroy();
+                        Destroy(bossController.boss);
+                        bossController.IsBossDead = true;
+                    }
+                    else if (boss.GetComponent<AbstractBoss>().BouzuHp <= 0)
+                    {
                         SEController.Instance.Play(SEPath.ShishiGawaraFailure);
                         uiControllerKoto.DeflaggerForBossDestroy();
                         Destroy(bossController.boss);

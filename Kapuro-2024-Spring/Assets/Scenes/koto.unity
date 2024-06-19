@@ -285,6 +285,7 @@ MonoBehaviour:
   bossList:
   - {fileID: 1124153704176640749, guid: ceb6d0282a4926e40820dfd032403223, type: 3}
   - {fileID: 8014437761727428818, guid: add308d820fb3734d80b03c8f33b8a84, type: 3}
+  - {fileID: 8014437761727428818, guid: 85a912f591c22d94081b38ab9b429766, type: 3}
   bossController: {fileID: 1520961372}
   uiControllerKoto: {fileID: 353453846}
   prefabController: {fileID: 644044494}
@@ -389,6 +390,10 @@ MonoBehaviour:
   - {fileID: 6196732176380277435, guid: 8577789ffc7c4f947a78f4191abd4841, type: 3}
   - {fileID: 6196732176380277435, guid: bc49b44188fef1e45888d6bcc57e35e2, type: 3}
   - {fileID: 6196732176380277435, guid: 37fe55df415878847b668e1134805b24, type: 3}
+  - {fileID: 5175058974315574278, guid: 653150bb9c0b6e4449986a3cbcb03a72, type: 3}
+  - {fileID: 5175058974315574278, guid: 91807fc024f2b1f49a6addcf399f1000, type: 3}
+  - {fileID: 5175058974315574278, guid: 227405ae872da6e4e9269b8f365227d3, type: 3}
+  - {fileID: 6196732176380277435, guid: 2629a7fbe37dcaa4980f4ab6c56f82a7, type: 3}
   roofTileController: {fileID: 330607405}
   bossController: {fileID: 1520961372}
   prefabController: {fileID: 644044494}
