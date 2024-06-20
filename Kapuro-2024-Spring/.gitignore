@@ -74,7 +74,3 @@ crashlytics-build.properties
 #For font asset file
 *SDF.asset
 *.ttf
-
-#music File
-*.mp3
-*.ogg

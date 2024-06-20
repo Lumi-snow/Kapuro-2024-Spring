@@ -6,13 +6,13 @@ namespace AudioController
 
     public class SEController : AudioController<SEController>
     {
-        protected override int audioPlayerNum => AudioControllerSetting.Entity.SEAudioPlayerNum; //AudioPlayerã®æ•°(åŒæ™‚å†ç”Ÿå¯èƒ½æ•°)
-        public static readonly string AUDIO_DIRECTORY_PATH = "Audio/SE";
+        protected override int audioPlayerNum => AudioControllerSetting.Entity.SEAudioPlayerNum; //AudioPlayer‚Ì”(“¯ŽžÄ¶‰Â”\”)
+        public static readonly string AUDIO_DIRECTORY_PATH = "SE";
 
         [SerializeField] private bool shouldAdjustVolumeRate = true;
 
-        /*åˆæœŸåŒ–*/
-        //èµ·å‹•æ™‚ã«å®Ÿè¡Œ
+        /*‰Šú‰»*/
+        //‹N“®Žž‚ÉŽÀs
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
         static void Initialize()
         {
@@ -37,8 +37,8 @@ namespace AudioController
             }
         }
 
-        /*å†ç”Ÿé–¢ä¿‚*/
-        //å†ç”Ÿ
+        /*Ä¶ŠÖŒW*/
+        //Ä¶
         public void Play(AudioClip audioClip, float volumeRate = 1, float delay = 0, float pitch = 1, bool isLoop = false, Action callback = null)
         {
             volumeRate = AdjustVolumeRate(volumeRate, audioClip.name);
@@ -48,7 +48,7 @@ namespace AudioController
             }
         }
 
-        //å†ç”Ÿ
+        //Ä¶
         public void Play(string audioPath, float volumeRate = 1, float delay = 0, float pitch = 1, bool isLoop = false, Action callback = null)
         {
             volumeRate = AdjustVolumeRate(volumeRate, audioPath);
@@ -58,8 +58,8 @@ namespace AudioController
             }
         }
 
-        /*å–å¾—*/
-        //ãƒœãƒªãƒ¥ãƒ¼ãƒ ã®å€çŽ‡ã‚’èª¿æ•´(åŒã˜ã‚‚ã®ãŒå†ç”Ÿã•ã‚Œã¦ã„ãŸã‚‰ãƒœãƒªãƒ¥ãƒ¼ãƒ ã‚’ä¸‹ã’ã¦ã€éŸ³å‰²ã‚Œã—ãªã„ã‚ˆã†ã«ã™ã‚‹)
+        /*Žæ“¾*/
+        //ƒ{ƒŠƒ…[ƒ€‚Ì”{—¦‚ð’²®(“¯‚¶‚à‚Ì‚ªÄ¶‚³‚ê‚Ä‚¢‚½‚çƒ{ƒŠƒ…[ƒ€‚ð‰º‚°‚ÄA‰¹Š„‚ê‚µ‚È‚¢‚æ‚¤‚É‚·‚é)
         private float AdjustVolumeRate(float volumeRate, string audioPathOrName)
         {
             if (shouldAdjustVolumeRate == false)
@@ -69,14 +69,14 @@ namespace AudioController
 
             var audioName = PathToName(audioPathOrName);
 
-            //æŒ‡å®šã—ãŸã‚‚ã®ã¨åŒã˜ã‚‚ã®ã‚’å†ç”Ÿã—ã¦ã„ã‚‹ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã‚’å–å¾—ã€ãªã‘ã‚Œã°ãã®ã¾ã¾ã®ãƒœãƒªãƒ¥ãƒ¼ãƒ ã‚’è¿”ã™
+            //Žw’è‚µ‚½‚à‚Ì‚Æ“¯‚¶‚à‚Ì‚ðÄ¶‚µ‚Ä‚¢‚éƒvƒŒƒCƒ„[‚ðŽæ“¾A‚È‚¯‚ê‚Î‚»‚Ì‚Ü‚Ü‚Ìƒ{ƒŠƒ…[ƒ€‚ð•Ô‚·
             var targetAudioPlayers = audioPlayerList.FindAll(player => player.CurrentAudioName == audioName);
             if (targetAudioPlayers.Count == 0)
             {
                 return volumeRate;
             }
 
-            //åŒã˜SEãŒé³´ã£ã¦ã™ããªã‚‰ãƒœãƒªãƒ¥ãƒ¼ãƒ ã‚’ä¸‹ã’ã‚‹
+            //“¯‚¶SE‚ª–Â‚Á‚Ä‚·‚®‚È‚çƒ{ƒŠƒ…[ƒ€‚ð‰º‚°‚é
             foreach (var targetAudioPlayer in audioPlayerList.FindAll(player => player.CurrentAudioName == audioName))
             {
                 if (targetAudioPlayer.CurrentVolume <= 0)
