@@ -2,15 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BotamochiPlayerController : MonoBehaviour
+//ほぼbota_PlayerControllerと同じです
+public class CameraController : MonoBehaviour
 {
-    //後から調整しやすいようにSerializeField化してあります。とりあえず0.05で動かします。
-    [SerializeField] float speed; 
-    //x, y方向の限界値　今は仮の値です
-    float xLimit = 8.5f;
-    float yLimit = 4.5f;
+    float speed;
+    float xLimit;
+    float yLimit;
+
+    void Start()
+    {
+        VariableCollection variableCollection = GameObject.Find("VariableCollection").GetComponent<VariableCollection>();
+        this.xLimit = variableCollection.xLimit;
+        this.yLimit = variableCollection.yLimit;
+        this.speed = variableCollection.speed;
+    }
 
     void Update()
+    {
+        //時間切れになるとカメラは停止する
+        if (!TimeScript.instance.isTimeUp)
+        {
+            move();
+        }
+    }
+
+    void move()
     {
         if (Input.GetKey(KeyCode.LeftArrow))
         {

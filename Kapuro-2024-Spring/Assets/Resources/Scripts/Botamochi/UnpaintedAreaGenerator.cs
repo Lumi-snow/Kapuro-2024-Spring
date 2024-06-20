@@ -2,24 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UnpaitedAreaGenerator : MonoBehaviour
+public class UnpaintedAreaGenerator : MonoBehaviour
 {
     public GameObject UnpaintedAreaPrefab;
     GameObject Kura;
 
     //蔵の半径
-    [SerializeField] float scale_kura;
+    float scale_kura;
 
     //UnpaintedAreaの半径
-    [SerializeField] float scale_area;
+    float scale_area;
 
     //UnpointedareaのZの値
-    [SerializeField] float z;
+    float z;
 
     //何個のUnpaintedAreaが生成されるかを決める
-    [SerializeField] int value;
+    int value;
     void Start()
     {
+        VariableCollection variableCollection = GameObject.Find("VariableCollection").GetComponent<VariableCollection>();
+        this.scale_kura = variableCollection.scale_kura;
+        this.scale_area = variableCollection.scale_area;
+        this.z = variableCollection.z_area;
+        this.value = variableCollection.value_area;
+
+
         this.Kura = GameObject.Find("Kura");
         //UnpaintedAreaが蔵をはみ出ないようにするために使用
         float scale = scale_kura - scale_area;
@@ -34,6 +41,7 @@ public class UnpaitedAreaGenerator : MonoBehaviour
             float py = Random.Range(Pos_Kura.y - scale, Pos_Kura.y + scale);
 
             go.transform.position = new Vector3(px, py, z);
+
         }
     }
 }
