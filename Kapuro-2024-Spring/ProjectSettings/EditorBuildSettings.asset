@@ -18,7 +18,7 @@ EditorBuildSettings:
     path: Assets/Scenes/koto.unity
     guid: 6c6df15aa95e1cd4aa69a82fd8da3a25
   - enabled: 1
-    path: Assets/Scenes/Scene04.unity
+    path: Assets/Scenes/botamochi.unity
     guid: 96d0dd20e35a3d94084bff988334f605
   - enabled: 1
     path: Assets/Scenes/HowToPlay.unity

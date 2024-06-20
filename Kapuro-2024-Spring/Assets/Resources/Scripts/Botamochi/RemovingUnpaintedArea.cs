@@ -17,8 +17,17 @@ public class RemovingUnpaintedArea : MonoBehaviour
 
     void Update()
     {
+        /*
+        nullチェック
+        TimeUp後にNullRefferenceExceptionが発生するのを防ぐ
+        */
+        if (gameObject == null || Player == null)
+        {
+            gameObject.GetComponent<RemovingUnpaintedArea>().enabled = false;
+        }
+
         //キーを押した際にそれぞれのオブジェクトの座標を参照し、ある値であったらUnpaintedAreaを削除する
-        if (Input.GetKeyDown(KeyCode.A))
+        else if (Input.GetKeyDown(KeyCode.A))
         {
             Vector3 Pos_UnpaintedArea = gameObject.transform.position;
             Vector3 Pos_Player = Player.transform.position;
