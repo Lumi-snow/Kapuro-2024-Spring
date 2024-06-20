@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CreateRandomPosition : MonoBehaviour
@@ -17,25 +18,36 @@ public class CreateRandomPosition : MonoBehaviour
     private Transform rangeB;
 
     private float time;
-        
+    private StartSignalScript startSignalScript;
+    private float previousTime;
+
     void Start()
     {
-        
+        startSignalScript = FindObjectOfType<StartSignalScript>(); // StartSignalScriptのインスタンスを探す
     }
 
     void Update()
     {
-        time = time + Time.deltaTime;
+        float time = TimerController.CountDownTime;
 
-        if(time > 3.0f)
+        if (startSignalScript != null && startSignalScript.signal == true)
         {
+            float currentTime = Mathf.Ceil(time);
 
-            float x = Random.Range(rangeA.position.x, rangeB.position.x);
-            float y = Random.Range(rangeA.position.y, rangeB.position.y);
+            if(currentTime % 3 == 0 && currentTime != previousTime)
+            {
 
-            Instantiate(createprefab, new Vector2(x, y), createprefab.transform.rotation);
+                float x = Random.Range(rangeA.position.x, rangeB.position.x);
+                float y = Random.Range(rangeA.position.y, rangeB.position.y);
 
-            time = 0f;
+                Instantiate(createprefab, new Vector2(x, y), createprefab.transform.rotation);
+                previousTime = currentTime;
+            }
+
+            if (TimerController.CountDownTime <= 0.0f)
+            {
+                time = 0f;
+            }
         }
     }
 }

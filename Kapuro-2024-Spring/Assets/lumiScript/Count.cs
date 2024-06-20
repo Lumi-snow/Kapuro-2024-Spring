@@ -9,21 +9,26 @@ public class Count : MonoBehaviour
     public Text countText;
     private int count;
     [SerializeField] private string tagName;
+    private StartSignalScript startSignalScript;
 
     void Start()
     {
         count = 0;
         SetCountText();
+        startSignalScript = FindObjectOfType<StartSignalScript>(); // StartSignalScriptのインスタンスを探す
     }
 
     // Update is called once per frame
     void OnCollisionEnter2D(Collision2D obj)
     {
-        if(obj.gameObject.tag == tagName)
+        if (startSignalScript != null && startSignalScript.signal == true)
         {
-            count++;
-            Debug.Log(count);
-            SetCountText();
+            if (obj.gameObject.tag == tagName)
+            {
+                count++;
+                Debug.Log(count);
+                SetCountText();
+            }
         }
     }
 
