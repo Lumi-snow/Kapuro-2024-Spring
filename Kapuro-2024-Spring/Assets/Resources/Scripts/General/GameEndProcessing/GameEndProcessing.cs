@@ -21,8 +21,6 @@ public class GameEndProcessing : MonoBehaviour
     //初期化処理
     public void Initialize()
     {
-        //Prefabのリストをクリア
-        prefabController.RemoveAllPrefabs();
         //ゲーム終了時のポップアップをScriptableObjectに追加
         prefabController.AddNewPrefab(gameEndPopUpPrefab);
     }

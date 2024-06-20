@@ -70,7 +70,7 @@ public class UIController_HowToPlay : MonoBehaviour
     private void initializePanels()
     {
         //パネルを動的に取得してリストに追加
-        for (int i = 1; i <= 4; i++)
+        for (int i = 1 ; i <= panelList.Count ; i++)
         {
             string panelName = "PanelScene0" + i.ToString(); //"PanelScene01", "PanelScene02", "PanelScene03", "PanelScene04"を探す
             GameObject panelObject = GameObject.Find(panelName); //panelNameをもとにpanelObjectを取得
