@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 using AudioController;
+using Cysharp.Threading.Tasks;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Networking;
 
 public class UIControllerKoto : MonoBehaviour
 {
@@ -20,6 +23,9 @@ public class UIControllerKoto : MonoBehaviour
 
     [SerializeField] private GameObject eventMessagePrefab; //イベントメッセージのプレハブ
 
+    [SerializeField] private GameObject resultPanel; //リザルトパネル
+    [SerializeField] private TextMeshProUGUI resultText; //リザルトテキスト
+
     //初期化
     public void Initialize()
     {
@@ -30,6 +36,9 @@ public class UIControllerKoto : MonoBehaviour
         foreach(GameObject popupPrefab in popupPrefabList)
             prefabController.AddNewPrefab(popupPrefab);
         prefabController.AddNewPrefab(eventMessagePrefab);
+        
+        /*ResultPanel*/
+        resultPanel.gameObject.SetActive(false);
     }
     
     //スコアの表示を更新
@@ -76,5 +85,24 @@ public class UIControllerKoto : MonoBehaviour
         }
         
         popupListForBoss.Clear();
+    }
+
+    public void OnStartMessage()
+    {
+        
+    }
+
+    public async UniTask ResultMessage()
+    {
+        StringBuilder stringBuilder = new StringBuilder();
+        resultPanel.gameObject.SetActive(true);
+        stringBuilder.Append(resultText.text + "\n");
+        await UniTask.Delay(1000);
+        stringBuilder.Append("あなたの総スコアは\n");
+        await UniTask.Delay(3000);
+        stringBuilder.Append(scoreController.AccumulatedScore.ToString() + "　点\n");
+        await UniTask.Delay(1000);
+        stringBuilder.Append("でした");
+        await UniTask.Delay(500);
     }
 }

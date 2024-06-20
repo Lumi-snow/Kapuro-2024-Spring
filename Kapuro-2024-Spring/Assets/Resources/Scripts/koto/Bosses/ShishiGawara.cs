@@ -1,3 +1,5 @@
+using Cysharp.Threading.Tasks;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine.UI;
 using UnityEngine;
@@ -47,10 +49,12 @@ public class ShishiGawara : AbstractBoss
         AwakingPointSlider.value = 0;
     }
 
-    public override void Initialize()
+    public override async void Initialize()
     {
         prefabController = this.AddComponent<PrefabController>();
         prefabController.prefabList = prefabList;
+        InitializeMessagePanel();
+        await OnGenerateMyself();
     }
     
     /*固有のメンバ変数*/
@@ -61,6 +65,9 @@ public class ShishiGawara : AbstractBoss
     [SerializeField] private int allshishiGawaraWhistleNum = 100; //笛の音が鳴る瓦の数
     [SerializeField] private bool isShishiGawaraAwaking = false; //覚醒しているかどうか
     [SerializeField] private bool isGenerateShishiGawaraWaterRoofTile = false; //特殊瓦を生成するかどうか
+    
+    [SerializeField] private GameObject panel; //パネル
+    [SerializeField] private TextMeshProUGUI messageText; //メッセージテキスト
     
     /*固有のプロパティ*/
     public override Slider AwakingPointSlider { get => awakingPointSlider; set => awakingPointSlider = value; }
@@ -113,5 +120,25 @@ public class ShishiGawara : AbstractBoss
         shishiGawaraEventRoofTile.GetComponent<RoofTile>().evaluateType = RoofTile.EvaluateType.NOT_EVALUATED; //shishiGawaraWaterRoofTileの評価をNOT_EVALUATEDに設定
         shishiGawaraEventRoofTile.GetComponent<RoofTile>().InitializeShishiGawaraMessageEvent(); //イベント用の瓦を初期化
         roofTileController.roofTiles.Insert(randomValue02, shishiGawaraEventRoofTile); //複製したshishiGawaraWaterRoofTileをリストに追加
+    }
+    
+    private void InitializeMessagePanel()
+    {
+        Transform panelTransform = gameObject.transform.Find("ExpressMessagePanel");
+        panel = GameObject.Find("ExpressMessagePanel");
+        Transform messageTextTransform = panelTransform.Find("ExpressMessageText");
+        messageText = messageTextTransform.GetComponent<TextMeshProUGUI>();
+        messageText.text = "獅子瓦の倒し方\n(下矢印キー押下で次のメッセージに進みます)";
+    }
+    
+    private async UniTask OnGenerateMyself()
+    {
+        messageText.text = "獅子瓦は水の音が鳴ると\n目覚めてしまいます\n(下矢印キー押下で次のメッセージに進みます)";
+        await UniTask.WaitUntil(() => Input.GetKeyDown(KeyCode.DownArrow), cancellationToken: this.GetCancellationTokenOnDestroy());
+        messageText.text = "水の音が鳴る瓦を置いたり\n捨てたりしてはいけません\n(下矢印キー押下で次のメッセージに進みます)";
+        await UniTask.WaitUntil(() => Input.GetKeyDown(KeyCode.DownArrow), cancellationToken: this.GetCancellationTokenOnDestroy());
+        messageText.text = "Spaceキーで笛を使って\n獅子瓦を沈めましょう\n(下矢印キー押下でメッセージを閉じる)";
+        await UniTask.WaitUntil(() => Input.GetKeyDown(KeyCode.DownArrow), cancellationToken: this.GetCancellationTokenOnDestroy());
+        panel.gameObject.SetActive(false);
     }
 }

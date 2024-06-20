@@ -59,7 +59,6 @@ public class KawaraBouzuEventRoofTile : RoofTile
     /*固有のメンバ関数*/
     public override void InitializeKawaraBouzuEvent()
     {
-        Debug.Log("koko");
         Transform panelTransform = gameObject.transform.Find("EventPanel");
         panel = GameObject.Find("EventPanel");
         Transform trueButtonTransform = panelTransform.Find("TrueButton");

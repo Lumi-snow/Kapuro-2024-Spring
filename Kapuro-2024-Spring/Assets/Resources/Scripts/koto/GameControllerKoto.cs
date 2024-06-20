@@ -41,12 +41,13 @@ public class GameControllerKoto : AbstractGameController
         GameEndProcess(); //ゲーム終了時の処理
     }
     
-    public void GameEndProcess()
+    public async void GameEndProcess()
     {
         //TODO: ゲーム終了時の処理を追加
         if (roofTileController.roofTiles.Count == 0 && bossController.boss == null)
         {
             BGMController.Instance.FadeOut("NormalBGM01", 1.0f);
+            //await uiControllerKoto.ResultMessage();
             SceneController.ChangeSceneToTitle();
         }
     }

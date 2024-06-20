@@ -33,7 +33,7 @@ public class RoofTileEventHandler : MonoBehaviour
     
     public void SetEvent() //イベントの種類を決定する
     {
-        int randomValue = UnityEngine.Random.Range(2, 3);
+        int randomValue = UnityEngine.Random.Range(0, 3);
         Debug.Log(randomValue);
         
         switch (randomValue)

@@ -49,10 +49,12 @@ public class KawaraBouzu : AbstractBoss
         bouzuHpSlider.value = bouzuMaxHp;
     }
 
-    public override void Initialize()
+    public override async void Initialize()
     {
         prefabController = this.AddComponent<PrefabController>();
         prefabController.prefabList = prefabList;
+        InitializeMessagePanel();
+        await OnGenerateMyself();
     }
     
     /*固有のメンバ変数*/
@@ -66,6 +68,9 @@ public class KawaraBouzu : AbstractBoss
     [SerializeField] private bool isGenerateKawaraBouzuRoofTile = false; //覚醒しているかどうか
     [SerializeField] private bool isCorrectAnswer = false; //正解かどうか
     [SerializeField] private bool isFinishEvent = false; //イベントが終了したかどうか
+
+    [SerializeField] private GameObject panel;
+    [SerializeField] private TextMeshProUGUI messageText;
     
     /*固有のプロパティ*/
     public override Slider BouzuHpSlider { get => bouzuHpSlider; set => bouzuHpSlider = value; }
@@ -129,5 +134,26 @@ public class KawaraBouzu : AbstractBoss
         kawaraBouzuEventRoofTile.GetComponent<RoofTile>().evaluateType = RoofTile.EvaluateType.NOT_EVALUATED; //shishiGawaraWaterRoofTileの評価をNOT_EVALUATEDに設定
         kawaraBouzuEventRoofTile.GetComponent<RoofTile>().InitializeKawaraBouzuEvent(); //イベント用の瓦を初期化
         roofTileController.roofTiles.Insert(randomValue02, kawaraBouzuEventRoofTile); //複製したshishiGawaraWaterRoofTileをリストに追加
+    }
+    
+    private void InitializeMessagePanel()
+    {
+        Transform panelTransform = gameObject.transform.Find("ExpressMessagePanel");
+        panel = GameObject.Find("ExpressMessagePanel");
+        Transform messageTextTransform = panelTransform.Find("ExpressMessageText");
+        messageText = messageTextTransform.GetComponent<TextMeshProUGUI>();
+        messageText.text = "瓦坊主の倒し方\n(下矢印キー押下で次のメッセージに進みます)";
+    }
+    
+    private async UniTask OnGenerateMyself()
+    {
+        Debug.Log("koko");
+        messageText.text = "瓦坊主と坊主がいます\n(下矢印キー押下で次のメッセージに進みます)";
+        await UniTask.WaitUntil(() => Input.GetKeyDown(KeyCode.DownArrow), cancellationToken: this.GetCancellationTokenOnDestroy());
+        messageText.text = "瓦坊主には\n油と豆をSpaceキーで投げてください\n(下矢印キー押下で次のメッセージに進みます)";
+        await UniTask.WaitUntil(() => Input.GetKeyDown(KeyCode.DownArrow), cancellationToken: this.GetCancellationTokenOnDestroy());
+        messageText.text = "坊主には\nお経を右矢印キーで受け取ってください\n(下矢印キー押下でメッセージを閉じる)";
+        await UniTask.WaitUntil(() => Input.GetKeyDown(KeyCode.DownArrow), cancellationToken: this.GetCancellationTokenOnDestroy());
+        panel.gameObject.SetActive(false);
     }
 }

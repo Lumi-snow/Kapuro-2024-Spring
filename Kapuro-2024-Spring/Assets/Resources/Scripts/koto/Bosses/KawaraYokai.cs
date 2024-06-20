@@ -1,3 +1,5 @@
+using Cysharp.Threading.Tasks;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -48,15 +50,20 @@ public class KawaraYokai : AbstractBoss
     }
     
     //初期化
-    public override void Initialize()
+    public override async void Initialize()
     {
         prefabController = this.AddComponent<PrefabController>();
         prefabController.prefabList = prefabList;
+        InitializeMessagePanel();
+        await OnGenerateMyself();
     }
     
     /*固有のメンバ変数*/
     [SerializeField] int allKawaraYokaisDescendantNum = 50;
     [SerializeField] bool isAllKawaraYokaisDescendantDead = false;
+    
+    [SerializeField] private GameObject panel; //パネル
+    [SerializeField] private TextMeshProUGUI messageText; //メッセージテキスト
     
     /*固有のプロパティ*/
     public override int AllDescendantNum 
@@ -85,5 +92,26 @@ public class KawaraYokai : AbstractBoss
         GameObject kawaraYokaisDescendant = prefabController.clonePrefab;
         kawaraYokaisDescendant.GetComponent<RoofTile>().evaluateType = RoofTile.EvaluateType.NOT_EVALUATED; //KawaraYokaiDescendantの評価をNOT_EVALUATEDに設定
         roofTileController.roofTiles.Insert(randomValue, kawaraYokaisDescendant); //複製したKawaraYokaiDescendantをリストに追加
+    }
+    
+    private void InitializeMessagePanel()
+    {
+        Transform panelTransform = gameObject.transform.Find("ExpressMessagePanel");
+        panel = GameObject.Find("ExpressMessagePanel");
+        Transform messageTextTransform = panelTransform.Find("ExpressMessageText");
+        messageText = messageTextTransform.GetComponent<TextMeshProUGUI>();
+        messageText.text = "瓦妖怪の倒し方\n(下矢印キー押下で次のメッセージに進みます)";
+    }
+    
+    private async UniTask OnGenerateMyself()
+    {
+        Debug.Log("koko");
+        messageText.text = "瓦妖怪の眷属を倒してください\n(下矢印キー押下で次のメッセージに進みます)";
+        await UniTask.WaitUntil(() => Input.GetKeyDown(KeyCode.DownArrow), cancellationToken: this.GetCancellationTokenOnDestroy());
+        messageText.text = "Spaceキーで\n眷属に攻撃することができます\n(下矢印キー押下で次のメッセージに進みます)";
+        await UniTask.WaitUntil(() => Input.GetKeyDown(KeyCode.DownArrow), cancellationToken: this.GetCancellationTokenOnDestroy());
+        messageText.text = "眷属に攻撃することで、\n瓦妖怪のHPを減らすことができます\n(下矢印キー押下でメッセージを閉じる)";
+        await UniTask.WaitUntil(() => Input.GetKeyDown(KeyCode.DownArrow), cancellationToken: this.GetCancellationTokenOnDestroy());
+        panel.gameObject.SetActive(false);
     }
 }
