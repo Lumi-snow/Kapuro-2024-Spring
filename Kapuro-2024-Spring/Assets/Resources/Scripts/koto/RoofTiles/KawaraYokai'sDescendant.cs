@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 public class KawaraYokaisDescendant : RoofTile
@@ -7,14 +8,26 @@ public class KawaraYokaisDescendant : RoofTile
     public override RoofTileType roofTileType => RoofTileType.KAWARA_YOKAI_DESCENDANT; // roofTileType プロパティをオーバーライド
     public override EvaluateType evaluateType { get; set; } // evaluateType プロパティをオーバーライド
 
-    private int KawaraYokaisDescendantscore = 1000;
+    /*共通のメンバ変数*/
+    [SerializeField] int KawaraYokaisDescendantscore = 500;
+    
+    /*共通のプロパティ*/
     public override int Score
     {
         get => KawaraYokaisDescendantscore;
         set => KawaraYokaisDescendantscore = value;
     }
     
-    private int KawaraYokaisDescendantAtackPower = 15;
+    /*共通のメンバ関数*/
+    public override async UniTask OnDestroyProcess()
+    {
+        await UniTask.Yield();
+    }
+    
+    /*固有のメンバ変数*/
+    [SerializeField] private int KawaraYokaisDescendantAtackPower = 22;
+    
+    /*固有のプロパティ*/
     public override int AttackPower
     {
         get => KawaraYokaisDescendantAtackPower;

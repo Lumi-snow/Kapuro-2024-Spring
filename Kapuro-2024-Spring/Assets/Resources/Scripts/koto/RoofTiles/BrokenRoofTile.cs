@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 //壊れた瓦
@@ -7,18 +8,24 @@ public class BrokenRoofTile : RoofTile
 {
     public override RoofTileType roofTileType => RoofTileType.BROKEN; // roofTileType プロパティをオーバーライド
     public override EvaluateType evaluateType { get; set; } // evaluateType プロパティをオーバーライド
-
-    private int scoreBrokenRoofTile = 50; //スコア
+    
+    /*共通のメンバ変数*/
+    [SerializeField] private int scoreBrokenRoofTile = 50; //スコア
+    
+    /*共通のプロパティ*/
     public override int Score //スコアのプロパティ
     {
         get => scoreBrokenRoofTile;
         set => scoreBrokenRoofTile = value;
     }
     
-    private int brokenAtackPower = 0; //攻撃力
-    public override int AttackPower //攻撃力のプロパティ
+    /*共通のメンバ関数*/
+    public override async UniTask OnDestroyProcess()
     {
-        get => brokenAtackPower;
-        set => brokenAtackPower = value;
+        await UniTask.Yield();
     }
+    
+    /*固有のメンバ変数*/
+    
+    /*固有のプロパティ*/
 }

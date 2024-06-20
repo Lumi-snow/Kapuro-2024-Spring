@@ -3,7 +3,13 @@ namespace AudioController
     public static class BGMPath
     {
         /*ここにBGMファイルへのパスを定数でかく*/
-        public const string Hoge = "Fuga";
         
+        //koto
+        public const string Hoge = "Fuga";
+        public const string BossBGM01 = "BossBGM01";
+        public const string BossBGM02 = "BossBGM02";
+        public const string NormalBGM01 = "NormalBGM01";
+        public const string EventMessage = "EventMessage";
+
     }
 }
