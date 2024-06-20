@@ -8,11 +8,8 @@ namespace ConstantNumberKoto
     {
         public enum EVENT_TYPE
         {
-            KAWARAYOKAI,
-            SHISHIGAWARA,
-            SHISHIGAWARA_EVENT,
-            KAWARA_BOUZU,
-            KAWARA_BOUZU_EVENT,
+            BOSS_YOKAI01,
+            BOSS_YOKAI02,
         }
         public static EVENT_TYPE eventType;
         public static int EVENT_TYPE_COUNT = 2;

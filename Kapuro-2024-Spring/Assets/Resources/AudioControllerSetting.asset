@@ -28,14 +28,14 @@ MonoBehaviour:
   isReleaseSECache: 0
   isAutoUpdateBGMSetting: 1
   isAutoUpdateSESetting: 1
-  forceToMonoForBGM: 0
+  forceToMonoForBGM: 1
   forceToMonoForSE: 1
   normalizeForBGM: 1
   normalizeForSE: 1
   ambisonicForBGM: 0
   ambisonicForSE: 0
   loadInBackgroundForBGM: 0
-  loadInBackgroundForSE: 0
+  loadInBackgourndForSE: 0
   loadTypeForBGM: 2
   loadTypeForSE: 1
   qualityForBGM: 0.3

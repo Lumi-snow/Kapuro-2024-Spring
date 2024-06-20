@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using ConstantNumberKoto;
-using Cysharp.Threading.Tasks;
 
 public class EventRoofTile : RoofTile
 {
@@ -15,23 +14,17 @@ public class EventRoofTile : RoofTile
         get => eventType;
     }
 
-    /*共通のメンバ変数*/
-    [SerializeField] private int scoreBrokenRoofTile = 50; //スコア
-    
-    /*共通のプロパティ*/
+    private int scoreBrokenRoofTile = 50; //スコア
     public override int Score //スコアのプロパティ
     {
         get => scoreBrokenRoofTile;
         set => scoreBrokenRoofTile = value;
     }
     
-    /*共通のメンバ関数*/
-    public override async UniTask OnDestroyProcess()
+    private int eventRoofTileAtackPower = 0; //攻撃力
+    public override int AttackPower //攻撃力のプロパティ
     {
-        await UniTask.Yield();
+        get => eventRoofTileAtackPower;
+        set => eventRoofTileAtackPower = value;
     }
-    
-    /*固有のメンバ変数*/
-    
-    /*固有のプロパティ*/
 }

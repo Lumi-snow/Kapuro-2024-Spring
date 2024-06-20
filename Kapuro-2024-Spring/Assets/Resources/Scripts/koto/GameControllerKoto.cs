@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using AudioController;
 using UnityEngine;
 
 public class GameControllerKoto : AbstractGameController
@@ -15,11 +14,8 @@ public class GameControllerKoto : AbstractGameController
 
     private void Start()
     {
-        BGMController.Instance.Play(BGMPath.NormalBGM01); //BGMの再生
-        BGMController.Instance.FadeIn(BGMPath.NormalBGM01, 1.0f); //BGMのフェードイン
         roofTileController.Initialize(); //瓦関係の処理の初期化
         bossController.Initialize(); //ボス関係の処理の初期化
-        uiControllerKoto.Initialize(); //UI関係の処理の初期化
     }
 
     private void Update()
@@ -31,7 +27,6 @@ public class GameControllerKoto : AbstractGameController
         if(bossController.boss != null && roofTileController.roofTiles.Count == 2) 
             roofTileController.GenerateRoofTileInTime(); //ボス生存時の瓦追加生成
         
-        bossController.SetBossBGM();
         bossController.SetNewBoss(); //ボスのセット
         if(bossController.boss != null)
             roofTileController.GenerateSpecialRoofTileForBoss(); //ボス用の瓦を生成
@@ -41,13 +36,11 @@ public class GameControllerKoto : AbstractGameController
         GameEndProcess(); //ゲーム終了時の処理
     }
     
-    public async void GameEndProcess()
+    public void GameEndProcess()
     {
         //TODO: ゲーム終了時の処理を追加
         if (roofTileController.roofTiles.Count == 0 && bossController.boss == null)
         {
-            BGMController.Instance.FadeOut("NormalBGM01", 1.0f);
-            //await uiControllerKoto.ResultMessage();
             SceneController.ChangeSceneToTitle();
         }
     }
