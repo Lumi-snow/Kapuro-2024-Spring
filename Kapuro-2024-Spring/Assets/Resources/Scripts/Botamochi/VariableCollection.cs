@@ -12,13 +12,10 @@ public class VariableCollection : MonoBehaviour
     [SerializeField] public float scale_kura;
 
     //UnpaintedAreaの半径
-    [SerializeField] public float scale_area;
+    [SerializeField] public float scale_shikkui;
 
     //UnpointedareaのZの値
-    [SerializeField] public float z_area;
-
-    //何個のUnpaintedAreaが生成されるかを決める
-    [SerializeField] public int value_area;
+    [SerializeField] public float z_shikkui;
 
 }
 

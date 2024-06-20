@@ -1,4 +1,4 @@
-using System.Collections;
+/*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro; //TextMeshProを扱う際に必要
@@ -34,4 +34,4 @@ public class UnpaintedAreaCount : MonoBehaviour
             countText.text = "Clear!";
         }
     }
-}
+}*/
