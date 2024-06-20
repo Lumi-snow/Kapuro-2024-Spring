@@ -11,6 +11,7 @@ public class StartSignalScript : MonoBehaviour
     private void Update()
     {
         StartSignal();
+        EndSignal();
     }
     void StartSignal()
     {
@@ -20,6 +21,21 @@ public class StartSignalScript : MonoBehaviour
         }
     }
 
+    void EndSignal()
+    {
+        if(TimerController.CountDownTime <= 0.0f)
+        {
+            signal = false;
+            Debug.Log("ƒIƒt‚É‚È‚Á‚½‚æ");
+            Invoke("MoveScenes", 3);
+        }
+    }
+
     void Signal()
     { signal = true; }
+
+    void MoveScenes()
+    {
+        SceneController.ChangeScene("lumiEnd");
+    }
 }

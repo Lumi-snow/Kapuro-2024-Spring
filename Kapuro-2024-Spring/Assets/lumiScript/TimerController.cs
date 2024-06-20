@@ -30,10 +30,6 @@ public class TimerController : MonoBehaviour
             {
                 TextCountDown.text = ("‚Ì‚±‚è‚¶‚©‚ñ:0:00");
                 step_time += Time.deltaTime;
-                if (step_time >= 3.0f)
-                {
-                    SceneController.ChangeScene("lumiEnd");
-                }
             }
         }
     }
