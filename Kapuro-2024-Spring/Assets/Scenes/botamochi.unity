@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 56861919}
   - component: {fileID: 56861918}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: TimeObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -731,7 +731,7 @@ GameObject:
   - component: {fileID: 832613740}
   - component: {fileID: 832613739}
   m_Layer: 0
-  m_Name: ShikkuiGenerator
+  m_Name: ShikkuiManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
