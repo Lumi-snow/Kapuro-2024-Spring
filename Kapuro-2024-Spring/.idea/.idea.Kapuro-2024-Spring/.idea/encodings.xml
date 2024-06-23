@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding" addBOMForNewFiles="with BOM under Windows, with no BOM otherwise">
+    <file url="file://$PROJECT_DIR$/Assets/Resources/Scripts/General/AudioScript/AudioAssistant.cs" charset="windows-31j" />
+    <file url="file://$PROJECT_DIR$/Assets/Resources/Scripts/General/AudioScript/AudioController.cs" charset="windows-31j" />
+    <file url="file://$PROJECT_DIR$/Assets/Resources/Scripts/General/AudioScript/AudioControllerSetting.cs" charset="windows-31j" />
+    <file url="file://$PROJECT_DIR$/Assets/Resources/Scripts/General/AudioScript/AudioPlayer.cs" charset="windows-31j" />
+    <file url="file://$PROJECT_DIR$/Assets/Resources/Scripts/General/AudioScript/BGMController.cs" charset="windows-31j" />
     <file url="file://$PROJECT_DIR$/Assets/Resources/Scripts/General/PrefabController.cs" charset="windows-31j" />
+    <file url="file://$PROJECT_DIR$/Assets/Resources/Scripts/General/PureSingleton.cs" charset="windows-31j" />
+    <file url="file://$PROJECT_DIR$/Assets/Resources/Scripts/General/SceneController.cs" charset="windows-31j" />
+    <file url="file://$PROJECT_DIR$/Assets/Resources/Scripts/Title/SceneButton.cs" charset="windows-31j" />
+    <file url="file://$PROJECT_DIR$/Assets/Resources/Scripts/koto/BrokenRoofTile.cs" charset="windows-31j" />
+    <file url="file://$PROJECT_DIR$/Assets/Resources/Scripts/koto/CorrectRoofTile.cs" charset="windows-31j" />
+    <file url="file://$PROJECT_DIR$/Assets/Resources/Scripts/koto/RoofTile.cs" charset="windows-31j" />
+    <file url="file://$PROJECT_DIR$/Assets/Resources/Scripts/koto/RoofTileGenerator.cs" charset="windows-31j" />
+    <file url="file://$PROJECT_DIR$/Assets/Resources/Scripts/koto/RoofTiles/BrokenRoofTile.cs" charset="windows-31j" />
+    <file url="file://$PROJECT_DIR$/Assets/Resources/Scripts/koto/RoofTiles/CorrectRoofTile.cs" charset="windows-31j" />
+    <file url="file://$PROJECT_DIR$/Assets/Resources/Scripts/koto/RoofTiles/RoofTile.cs" charset="windows-31j" />
   </component>
 </project>

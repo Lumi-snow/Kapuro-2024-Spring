@@ -18,7 +18,7 @@ EditorBuildSettings:
     path: Assets/Scenes/koto.unity
     guid: 6c6df15aa95e1cd4aa69a82fd8da3a25
   - enabled: 1
-    path: Assets/Scenes/Scene04.unity
+    path: Assets/Scenes/botamochi.unity
     guid: 96d0dd20e35a3d94084bff988334f605
   - enabled: 1
     path: Assets/Scenes/HowToPlay.unity
@@ -29,5 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/lumiEnd.unity
     guid: 62e9dfce02d092549a6261f5f41dfc9b
+    path: Assets/Scenes/StartupProcessing.unity
+    guid: cd99f066b5cfaa84ca9438bb0482dfb7
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 8cf8edd3c6b83ba4bb11f26848bfca15, type: 2}
