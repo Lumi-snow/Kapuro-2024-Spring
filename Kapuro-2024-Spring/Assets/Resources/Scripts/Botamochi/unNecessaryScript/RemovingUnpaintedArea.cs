@@ -1,4 +1,4 @@
-using System.Collections;
+/*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -21,6 +21,7 @@ public class RemovingUnpaintedArea : MonoBehaviour
         nullチェック
         TimeUp後にNullRefferenceExceptionが発生するのを防ぐ
         */
+        /*
         if (gameObject == null || Player == null)
         {
             gameObject.GetComponent<RemovingUnpaintedArea>().enabled = false;
@@ -40,3 +41,4 @@ public class RemovingUnpaintedArea : MonoBehaviour
         }
     }
 }
+*/
