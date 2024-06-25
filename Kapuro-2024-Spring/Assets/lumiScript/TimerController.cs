@@ -7,7 +7,6 @@ using System;
 public class TimerController : MonoBehaviour
 {
     public static float CountDownTime;
-    public static float CountDownTimeCp;
     public Text TextCountDown;
     private float step_time;
     private StartSignalScript startSignalScript;
