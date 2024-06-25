@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -7,7 +8,7 @@ using UnityEngine.UI;
 public class Count : MonoBehaviour
 {
     public Text countText;
-    private int count;
+    public static int count;
     [SerializeField] private string tagName;
     private StartSignalScript startSignalScript;
 
@@ -36,4 +37,9 @@ public class Count : MonoBehaviour
     {
         countText.text = count.ToString();
     }
-}
+
+    public static int getCount()
+    {
+        return count;
+    }
+ }
