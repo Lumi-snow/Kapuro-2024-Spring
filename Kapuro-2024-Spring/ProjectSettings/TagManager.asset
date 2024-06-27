@@ -8,6 +8,7 @@ TagManager:
   - ItemA
   - ItemB
   - ItemC
+  - ItemD
   layers:
   - Default
   - TransparentFX
